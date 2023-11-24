@@ -32,7 +32,11 @@ export default {
         <li class="list-group-item">Tipologia</li>
       </ul>
       <div class="card-body">
-        <button class="btn btn-primary">Visita Ristorante</button>
+        <router-link
+          :to="{ name: 'restaurant' }"
+          class="btn btn-primary mt-1 my-2 mx-5"
+          >Visita il ristorante</router-link
+        >
       </div>
     </div>
   </div>

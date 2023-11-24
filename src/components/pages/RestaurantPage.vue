@@ -1,5 +1,5 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
+import RestaurantLayout from "../restaurants/RestaurantLayout.vue";
 
 export default {
   data() {
@@ -8,14 +8,14 @@ export default {
     };
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  components: {
+    RestaurantLayout,
+  },
 };
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <RestaurantLayout></RestaurantLayout>
 </template>
 
 <style lang="scss" scoped></style>
