@@ -28,7 +28,7 @@ export default {
       });
 
       axios
-        .get(this.baseUrl + "get-restaurants-by-filters", {
+        .get(this.baseUrl + "get-restaurants-by-type", {
           headers: { "Content-Type": "multipart/from-data" },
           params: { activeTypes },
         })
