@@ -7,7 +7,7 @@ import RestaurantCard from "../restaurants/RestaurantCard.vue";
 export default {
   data() {
     return {
-      baseUrl: "http://127.0.0.1:8000/api/",
+      baseUrl: "http://localhost:8000/api/",
       types: [],
       filteredRestaurants: [],
     };
@@ -28,12 +28,12 @@ export default {
       });
 
       axios
-        .get(this.baseUrl + "get-restaurants-by-filters", {
+        .get(this.baseUrl + "get-restaurants-by-types", {
           headers: { "Content-Type": "multipart/from-data" },
           params: { activeTypes },
         })
         .then((response) => {
-          this.filteredRestaurants = response.data.data;
+          this.filteredRestaurants = response.data;
         });
     },
 
@@ -68,7 +68,7 @@ export default {
     <div class="row">
       <h3>Seleziona un tipo</h3>
       <div class="col-4 d-flex flex-column text-center">
-        <!--  <span
+        <span
           v-for="(type, index) in types"
           :key="type.id"
           :class="type.active ? 'label-' + type.label : 'disabled'"
@@ -76,18 +76,20 @@ export default {
           class="type-label mx-3 my-2"
         >
           {{ type.label }}
-        </span> -->
+        </span>
         <span class="badge bg-primary w-25 mb-3">Francese</span>
         <span class="badge bg-danger w-25 mb-3">Americano</span>
         <span class="badge bg-success w-25">Italiano</span>
       </div>
       <div>
         <!--! inserire all'interno di card il commento riga 87 - 90 -->
-        <RestaurantCard> </RestaurantCard>
-        <!-- v-for="restaurant in filteredRestaurants"
+        <RestaurantCard
+          v-for="restaurant in filteredRestaurants"
           :key="restaurant.id"
           :restaurant="restaurant"
-          :detailView="false" -->
+          :detailView="false"
+        >
+        </RestaurantCard>
       </div>
     </div>
   </div>
