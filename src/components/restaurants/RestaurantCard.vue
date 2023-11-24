@@ -23,7 +23,7 @@ export default {
     <div class="card" style="width: 18rem">
       <img src="..." class="card-img-top" alt="..." />
       <div class="card-body">
-        <h5 class="card-title">Nome Ristorante</h5>
+        <h5 class="card-title">{{ restaurant.name }}</h5>
         <p class="card-text">Descrizione</p>
       </div>
       <ul class="list-group list-group-flush">
