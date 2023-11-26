@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark p-0 mb-2">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark p-0">
     <div class="container-fluid bg-dark p-2">
       <router-link class="navbar-brand text-light" :to="{ name: 'home' }"
         >DeliveBoo</router-link
