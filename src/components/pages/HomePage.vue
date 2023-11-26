@@ -62,26 +62,32 @@ export default {
 </script>
 
 <template>
+  <div class="container-home-image">
+    <div class="container-text">
+      <h3>Welcome to DeliveBoo</h3>
+    </div>
+  </div>
   <div class="container">
-    <h3>Filtra Ristoranti</h3>
-
-    <div class="row">
+    <h3>I nostri ristoratori</h3>
+    <div class="container mt-5">
+      <!--* Etichette Tipi -->
       <h3>Seleziona un tipo</h3>
-      <div class="col-4 d-flex flex-column text-center">
-        <span
-          v-for="(type, index) in types"
-          :key="type.id"
-          :class="type.active ? 'label-' + type.label : 'disabled'"
-          @click="toggleType(type)"
-          class="type-label mx-3 my-2"
-        >
-          {{ type.label }}
-        </span>
-        <span class="badge bg-primary w-25 mb-3">Francese</span>
-        <span class="badge bg-danger w-25 mb-3">Americano</span>
-        <span class="badge bg-success w-25">Italiano</span>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-12">
+          <span
+            v-for="(type, index) in types"
+            :key="type.id"
+            :class="type.active ? 'label-' + type.label : 'disabled'"
+            @click="toggleType(type)"
+            class="type-label mx-3 my-2"
+          >
+            {{ type.label }}
+          </span>
+        </div>
       </div>
-      <div>
+
+      <div class="row">
+        <!--* Card Ristoranti -->
         <!--! inserire all'interno di card il commento riga 87 - 90 -->
         <RestaurantCard
           v-for="restaurant in filteredRestaurants"
@@ -96,26 +102,53 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.container-home-image {
+  width: 100%;
+  height: 350px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url("https://cdn.vox-cdn.com/thumbor/5d_RtADj8ncnVqh-afV3mU-XQv0=/0x0:1600x1067/1200x900/filters:focal(672x406:928x662)/cdn.vox-cdn.com/uploads/chorus_image/image/57698831/51951042270_78ea1e8590_h.7.jpg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .container-text {
+    width: 80%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+      color: white;
+    }
+  }
+}
 .type-label {
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 5px 10px;
   border-radius: 5px;
   text-decoration: none;
+  font-weight: bold;
   cursor: pointer;
 }
 
-.label-Front-End {
-  background-color: rgb(50, 124, 86);
+.label-Italiano {
+  background-color: rgb(85, 136, 85);
 }
 
-.label-Back-End {
-  background-color: rgb(212, 119, 66);
+.label-Francese {
+  background-color: rgb(101, 101, 169);
 }
 
-.label-Full-stack {
-  background-color: rgb(76, 55, 101);
+.label-Americano {
+  background-color: rgb(231, 193, 123);
 }
-
+.label-Inglese {
+  background-color: rgb(225, 125, 125);
+}
 .disabled {
   background-color: gray;
 }
