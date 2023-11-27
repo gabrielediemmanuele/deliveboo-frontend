@@ -10,6 +10,7 @@ export default {
 
   props: {
     restaurant: Object,
+    restaurantId: Number,
     detailView: Boolean,
   },
   // components: {
