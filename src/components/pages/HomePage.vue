@@ -20,49 +20,7 @@ export default {
   },
 
   methods: {
-    /* fetchRestaurants() {
-      const activeTypes = [];
-
-      this.types.forEach((type) => {
-        if (type.active) {
-          activeTypes.push(type.id);
-        }
-      });
-
-      axios
-        .get(this.baseUrl + "get-restaurants-by-types/", {
-          headers: { "Content-Type": "multipart/from-data" },
-          params: { type_id: activeTypes },
-        })
-        .then((response) => {
-          this.filteredRestaurants = response.data;
-        });
-    }, */
-
-    /* fetchRestaurants() {
-      const activeTypes = this.types.filter((type) => type.active);
-
-      // Verifica se ci sono tipi attivi
-      if (activeTypes.length > 0) {
-        const selectedType = activeTypes[0];
-
-        axios
-          .get(this.baseUrl + "get-restaurants-by-types/", {
-            headers: { "Content-Type": "multipart/form-data" },
-            params: { type_id: selectedType.id },
-          })
-          .then((response) => {
-            // Filtra solo i ristoranti con il tipo selezionato
-            this.filteredRestaurants = response.data.filter((restaurant) =>
-              restaurant.types.some((type) => type.id === selectedType.id)
-            );
-          });
-      } else {
-        // Se nessun tipo è attivo, mostra tutti i ristoranti
-        this.filteredRestaurants = this.restaurants;
-      }
-    }, */
-
+    
     fetchRestaurants() {
       const activeTypes = this.types.filter((type) => type.active);
 
