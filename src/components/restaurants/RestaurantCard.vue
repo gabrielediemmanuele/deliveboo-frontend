@@ -41,7 +41,7 @@ export default {
       </ul>
       <div class="card-body">
         <router-link
-          :to="{ name: 'restaurant' }"
+          :to="{ name: 'restaurant', params: { restaurantId: restaurant.id } }"
           class="btn btn-primary mt-1 my-2 mx-5"
           >Visita il ristorante</router-link
         >
