@@ -80,10 +80,15 @@ export default {
             this.filteredRestaurants = response.data.filter((restaurant) =>
               restaurant.types.some((type) => selectedTypeIds.includes(type.id))
             );
+          })
+          .catch((error) => {
+            console.error("Error fetching restaurants by types:", error);
           });
       } else {
         // Se nessun tipo è attivo, mostra tutti i ristoranti
-        this.filteredRestaurants = this.restaurants;
+        axios.get(this.baseUrl + "restaurants").then((response) => {
+          this.filteredRestaurants = response.data
+        });
       }
     },
 
