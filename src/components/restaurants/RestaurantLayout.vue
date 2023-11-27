@@ -10,19 +10,20 @@ export default {
     };
   },
 
-  props: ["restaurantId"],
+  props: {restaurantId: Number},
 
   methods: {
     fetchDishes() {
       axios
-        .get(this.baseUrl + "dishes", {
-          params: {
-            restaurant_id: this.restaurantId,
-          },
-        })
+        .get(this.baseUrl + `restaurants/${this.restaurantId}/dishes`)
         .then((response) => {
           this.dishes = response.data;
+        })
+        
+        .catch((error) => {
+          console.error("Error fetching dishes:", error);
         });
+
     },
   },
   mounted() {
@@ -32,16 +33,11 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="container-image">
-      <img src="" alt="" />
-    </div>
-    <h1>nome ristorante</h1>
-    <div>
-      <p>descrizione</p>
-    </div>
-    <div class="row">
-      <div class="card">qui si vedranno tutti i piatti.</div>
+  <div class="row">
+    <div class="card" v-for="dish in dishes" :key="dish.id">
+      <h5 class="card-title">{{ dish.name }}</h5>
+      <p class="card-text">{{ dish.description }}</p>
+      <!-- Altre informazioni sui piatti... -->
     </div>
   </div>
 </template>
