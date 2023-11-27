@@ -106,6 +106,7 @@ export default {
           v-for="restaurant in filteredRestaurants"
           :key="restaurant.id"
           :restaurant="restaurant"
+          :restaurantId="restaurant.id"
           :detailView="false"
         >
         </RestaurantCard>
