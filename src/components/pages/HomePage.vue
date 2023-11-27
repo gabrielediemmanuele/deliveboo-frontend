@@ -9,7 +9,9 @@ export default {
     return {
       baseUrl: "http://localhost:8000/api/",
       types: [],
+      restaurants: [],
       filteredRestaurants: [],
+      selectedTypeIds: [],
     };
   },
 
@@ -18,7 +20,7 @@ export default {
   },
 
   methods: {
-    fetchRestaurants() {
+    /* fetchRestaurants() {
       const activeTypes = [];
 
       this.types.forEach((type) => {
@@ -28,13 +30,61 @@ export default {
       });
 
       axios
-        .get(this.baseUrl + "get-restaurants-by-types", {
+        .get(this.baseUrl + "get-restaurants-by-types/", {
           headers: { "Content-Type": "multipart/from-data" },
-          params: { activeTypes },
+          params: { type_id: activeTypes },
         })
         .then((response) => {
           this.filteredRestaurants = response.data;
         });
+    }, */
+
+    /* fetchRestaurants() {
+      const activeTypes = this.types.filter((type) => type.active);
+
+      // Verifica se ci sono tipi attivi
+      if (activeTypes.length > 0) {
+        const selectedType = activeTypes[0];
+
+        axios
+          .get(this.baseUrl + "get-restaurants-by-types/", {
+            headers: { "Content-Type": "multipart/form-data" },
+            params: { type_id: selectedType.id },
+          })
+          .then((response) => {
+            // Filtra solo i ristoranti con il tipo selezionato
+            this.filteredRestaurants = response.data.filter((restaurant) =>
+              restaurant.types.some((type) => type.id === selectedType.id)
+            );
+          });
+      } else {
+        // Se nessun tipo è attivo, mostra tutti i ristoranti
+        this.filteredRestaurants = this.restaurants;
+      }
+    }, */
+
+    fetchRestaurants() {
+      const activeTypes = this.types.filter((type) => type.active);
+
+      // Verifica se ci sono tipi attivi
+      if (activeTypes.length > 0) {
+        const selectedTypeIds = activeTypes.map((type) => type.id);
+
+        axios
+          .get(this.baseUrl + "get-restaurants-by-types/", {
+            headers: { "Content-Type": "multipart/form-data" },
+            params: { type_ids: selectedTypeIds },
+          })
+          .then((response) => {
+            // Filtra solo i ristoranti che hanno almeno uno dei tipi selezionati
+            this.filteredRestaurants = response.data.filter((restaurant) =>
+              restaurant.types.some((type) => selectedTypeIds.includes(type.id))
+            );
+          });
+      } else {
+        // Se nessun tipo è attivo, mostra tutti i ristoranti
+        this.filteredRestaurants = this.restaurants;
+      }
     },
 
     fetchTypes() {
