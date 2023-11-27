@@ -22,11 +22,7 @@ export default {
   <div class="col-lg-4 col-md-6 col-sm-12 mt-4 mb-2">
     <div class="card" style="width: 18rem">
       <!--* da modificare!  -->
-      <img
-        src="https://nepomuk.it/wp-content/uploads/2022/02/pizzeria-sterzing.jpg"
-        class="card-img-top"
-        alt="..."
-      />
+      <img :src="restaurant.image" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ restaurant.name }}</h5>
         <p class="card-text">{{ restaurant.description }}</p>
