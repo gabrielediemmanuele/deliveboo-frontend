@@ -1,16 +1,33 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
+import axios from "axios";
 
 export default {
   data() {
     return {
-      //
+      baseUrl: "http://localhost:8000/api/",
+      dishes: [],
     };
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  props: ["restaurantId"],
+
+  methods: {
+    fetchDishes() {
+      axios
+        .get(this.baseUrl + "dishes", {
+          params: {
+            restaurant_id: this.restaurantId,
+          },
+        })
+        .then((response) => {
+          this.dishes = response.data;
+        });
+    },
+  },
+  mounted() {
+    this.fetchDishes();
+  },
 };
 </script>
 
