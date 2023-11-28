@@ -33,13 +33,13 @@ export default {
             params: { type_ids: selectedTypeIds },
           })
           .then((response) => {
-            // Filtra solo i ristoranti che hanno almeno uno dei tipi selezionati
-            console.log("Selected Type IDs:", selectedTypeIds);
+            // filtra ogni tipo solo se presente
             this.filteredRestaurants = response.data.filter((restaurant) =>
-              restaurant.types.every((typeId) =>
+              selectedTypeIds.every((typeId) =>
                 restaurant.types.some((type) => type.id === typeId)
               )
             );
+          
           })
           .catch((error) => {
             console.error("Error fetching restaurants by types:", error);
