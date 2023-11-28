@@ -20,7 +20,6 @@ export default {
   },
 
   methods: {
-    
     fetchRestaurants() {
       const activeTypes = this.types.filter((type) => type.active);
 
@@ -34,10 +33,13 @@ export default {
             params: { type_ids: selectedTypeIds },
           })
           .then((response) => {
-            // Filtra solo i ristoranti che hanno almeno uno dei tipi selezionati
+            // filtra ogni tipo solo se presente
             this.filteredRestaurants = response.data.filter((restaurant) =>
-              restaurant.types.some((type) => selectedTypeIds.includes(type.id))
+              selectedTypeIds.every((typeId) =>
+                restaurant.types.some((type) => type.id === typeId)
+              )
             );
+          
           })
           .catch((error) => {
             console.error("Error fetching restaurants by types:", error);
@@ -45,7 +47,7 @@ export default {
       } else {
         // Se nessun tipo è attivo, mostra tutti i ristoranti
         axios.get(this.baseUrl + "restaurants").then((response) => {
-          this.filteredRestaurants = response.data
+          this.filteredRestaurants = response.data;
         });
       }
     },
