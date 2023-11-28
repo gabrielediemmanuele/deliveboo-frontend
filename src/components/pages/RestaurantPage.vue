@@ -1,5 +1,4 @@
 <script>
-import RestaurantLayout from "../restaurants/RestaurantLayout.vue";
 import axios from "axios";
 
 export default {
