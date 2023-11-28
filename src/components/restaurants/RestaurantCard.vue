@@ -54,6 +54,7 @@ export default {
 <style lang="scss" scoped>
 .type-label {
   color: rgb(255, 255, 255);
+  background-color: rgb(192, 74, 0);
   padding: 5px 10px;
   border-radius: 5px;
   text-decoration: none;
@@ -62,23 +63,5 @@ export default {
   width: 40%;
   text-align: center;
   margin: 5px auto;
-}
-
-.label-Italiano {
-  background-color: rgb(85, 136, 85);
-}
-
-.label-Francese {
-  background-color: rgb(101, 101, 169);
-}
-
-.label-Americano {
-  background-color: rgb(231, 193, 123);
-}
-.label-Inglese {
-  background-color: rgb(225, 125, 125);
-}
-.disabled {
-  background-color: gray;
 }
 </style>

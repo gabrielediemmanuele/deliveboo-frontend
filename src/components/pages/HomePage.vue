@@ -39,7 +39,6 @@ export default {
                 restaurant.types.some((type) => type.id === typeId)
               )
             );
-          
           })
           .catch((error) => {
             console.error("Error fetching restaurants by types:", error);
@@ -85,7 +84,7 @@ export default {
   <div class="container">
     <h3>I nostri ristoratori</h3>
     <div class="container mt-5">
-      <!--* Etichette Tipi -->
+      <!--* Etichette Tipi // :class="type.active ? 'label-' + type.label : 'disabled'" -->
       <h3>Seleziona un tipo</h3>
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-12">
@@ -144,6 +143,7 @@ export default {
 }
 .type-label {
   color: rgb(255, 255, 255);
+  background-color: rgb(192, 74, 0);
   padding: 5px 10px;
   border-radius: 5px;
   text-decoration: none;
@@ -151,20 +151,6 @@ export default {
   cursor: pointer;
 }
 
-.label-Italiano {
-  background-color: rgb(85, 136, 85);
-}
-
-.label-Francese {
-  background-color: rgb(101, 101, 169);
-}
-
-.label-Americano {
-  background-color: rgb(231, 193, 123);
-}
-.label-Inglese {
-  background-color: rgb(225, 125, 125);
-}
 .disabled {
   background-color: gray;
 }
