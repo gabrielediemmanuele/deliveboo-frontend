@@ -76,9 +76,6 @@ export default {
 </script>
 
 <template>
-  <div>
-    <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-  </div>
   <div class="container-home-image">
     <div class="container-text">
       <h3>Welcome to DeliveBoo</h3>
