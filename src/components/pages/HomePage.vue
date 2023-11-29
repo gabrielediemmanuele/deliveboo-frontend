@@ -76,6 +76,9 @@ export default {
 </script>
 
 <template>
+  <div>
+    <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+  </div>
   <div class="container-home-image">
     <div class="container-text">
       <h3>Welcome to DeliveBoo</h3>
@@ -88,13 +91,8 @@ export default {
       <h3>Seleziona un tipo</h3>
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-12">
-          <span
-            v-for="(type, index) in types"
-            :key="type.id"
-            :class="type.active ? 'label-' + type.label : 'disabled'"
-            @click="toggleType(type)"
-            class="type-label mx-3 my-2"
-          >
+          <span v-for="(type, index) in types" :key="type.id" :class="type.active ? 'label-' + type.label : 'disabled'"
+            @click="toggleType(type)" class="type-label mx-3 my-2">
             {{ type.label }}
           </span>
         </div>
@@ -103,13 +101,8 @@ export default {
       <div class="row">
         <!--* Card Ristoranti -->
         <!--! inserire all'interno di card il commento riga 87 - 90 -->
-        <RestaurantCard
-          v-for="restaurant in filteredRestaurants"
-          :key="restaurant.id"
-          :restaurant="restaurant"
-          :restaurantId="restaurant.id"
-          :detailView="false"
-        >
+        <RestaurantCard v-for="restaurant in filteredRestaurants" :key="restaurant.id" :restaurant="restaurant"
+          :restaurantId="restaurant.id" :detailView="false">
         </RestaurantCard>
       </div>
     </div>
@@ -127,6 +120,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+
   .container-text {
     width: 80%;
     height: 100px;
@@ -141,6 +135,7 @@ export default {
     }
   }
 }
+
 .type-label {
   color: rgb(255, 255, 255);
   background-color: rgb(192, 74, 0);
