@@ -10,6 +10,12 @@ export default {
       baseUrl: "http://localhost:8000/api/",
       dishes: [],
       cart: [],
+      cartadd: {
+        id: "",
+        name: "",
+        price: "",
+        image: "",
+      },
     };
   },
 
