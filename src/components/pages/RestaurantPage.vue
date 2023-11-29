@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { eventBus } from '../../main.js';
 
 export default {
   data() {
@@ -14,7 +15,7 @@ export default {
   // components: {
   //   RestaurantLayout,
   // },
-  props: {restaurantId: Number},
+  props: { restaurantId: Number },
 
   methods: {
     fetchDishes() {
@@ -23,11 +24,15 @@ export default {
         .then((response) => {
           this.dishes = response.data;
         })
-        
+
         .catch((error) => {
           console.error("Error fetching dishes:", error);
         });
 
+    },
+    addToCartClicked(dish) {
+      // Emessa l'evento addToCartEvent sull'eventBus con i dati del piatto
+      eventBus.$emit('addToCartEvent', dish); // Puoi passare i dati del piatto come necessario
     },
   },
   mounted() {
@@ -42,6 +47,7 @@ export default {
     <div class="card" v-for="dish in dishes" :key="dish.id">
       <h5 class="card-title">{{ dish.name }}</h5>
       <p class="card-text">{{ dish.description }}</p>
+      <button @click="addToCartClicked(dish)">Aggiungi al carrello</button>
       <!-- Altre informazioni sui piatti... -->
     </div>
   </div>

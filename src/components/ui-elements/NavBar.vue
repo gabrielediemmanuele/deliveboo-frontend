@@ -30,8 +30,8 @@ export default {
               :to="{ name: 'home' }">Homepage</router-link>
           </li>
           <!-- Aggiunta dell'icona alla barra di navigazione -->
-          <li class="nav-item cart-icon">
-            <font-awesome-icon icon="fa-solid fa-cart-shopping" @click="openCart" />
+          <li class="nav-item cart">
+            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
           </li>
         </ul>
       </div>
@@ -41,7 +41,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.cart-icon {
+.cart {
   color: aliceblue;
 }
 </style>

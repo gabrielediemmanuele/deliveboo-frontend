@@ -31,21 +31,14 @@ export default {
       <ul class="list-group list-group-flush">
         <li class="list-group-item">{{ restaurant.address }}</li>
         <li class="list-group-item">{{ restaurant.phone_number }}</li>
-        <li
-          class="list-group-item type-label d-flex justify-content-center"
-          v-for="(type, index) in restaurant.types"
-          :key="type.id"
-          :class="'label-' + type.label"
-        >
+        <li class="list-group-item type-label d-flex justify-content-center" v-for="(type, index) in restaurant.types"
+          :key="type.id" :class="'label-' + type.label">
           {{ type.label }}
         </li>
       </ul>
       <div class="card-body">
-        <router-link
-          :to="{ name: 'restaurant', params: { restaurantId: restaurant.id } }"
-          class="btn btn-primary mt-1 my-2 mx-5"
-          >Visita il ristorante</router-link
-        >
+        <router-link :to="{ name: 'restaurant', params: { restaurantId: restaurant.id } }"
+          class="btn btn-primary mt-1 my-2 mx-5">Visita il ristorante</router-link>
       </div>
     </div>
   </div>
