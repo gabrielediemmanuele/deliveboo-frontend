@@ -76,9 +76,10 @@ export default {
 </script>
 
 <template>
-  <div class="container-home-image">
-    <div class="container-text">
-      <h3>Welcome to DeliveBoo</h3>
+  <div class="container-home">
+    <div class="cont-slogan">Mangia e bevi, QUANDO VUOI!</div>
+    <div class="cont-rider-img">
+      <img src="../../assets/img/" alt="" />
     </div>
   </div>
   <div class="container">
@@ -117,28 +118,23 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.container-home-image {
+.container-home {
   width: 100%;
   height: 350px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-image: url("https://cdn.vox-cdn.com/thumbor/5d_RtADj8ncnVqh-afV3mU-XQv0=/0x0:1600x1067/1200x900/filters:focal(672x406:928x662)/cdn.vox-cdn.com/uploads/chorus_image/image/57698831/51951042270_78ea1e8590_h.7.jpg");
+  border: 2px dashed red;
   display: flex;
   align-items: center;
   justify-content: center;
-  .container-text {
-    width: 80%;
-    height: 100px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    h3 {
-      color: white;
-    }
+  .cont-slogan {
+    width: 40%;
+    margin: auto 10px;
+    border: 2px dashed rgb(34, 0, 255);
+  }
+  .cont-rider-img {
+    width: 40%;
+    margin: auto 10px;
+    border: 2px dashed rgb(0, 255, 8);
   }
 }
 .type-label {
