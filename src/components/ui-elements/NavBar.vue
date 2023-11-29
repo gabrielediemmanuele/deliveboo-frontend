@@ -15,8 +15,9 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark p-0">
-    <div class="container-fluid bg-dark p-2">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
+    <div class="container-fluid p-3">
+      <img class="cloche mx-1" src="../../assets/img/cloche-white.svg" alt="" />
       <router-link class="navbar-brand text-light" :to="{ name: 'home' }"
         >DeliveBoo</router-link
       >
@@ -35,10 +36,20 @@ export default {
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <router-link
-              class="nav-link active text-light"
+              class="nav-link active text-light mx-2"
               aria-current="page"
               :to="{ name: 'home' }"
               >Homepage</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light mx-2" aria-current="page"
+              >Contattaci</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light mx-2" aria-current="page"
+              >Lavora con Noi</a
             >
           </li>
         </ul>
@@ -47,4 +58,28 @@ export default {
   </nav>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.cloche {
+  width: 40px;
+}
+
+.container-fluid {
+  background-color: rgb(48, 169, 129);
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: 20px;
+}
+.navbar-brand {
+  font-size: 30px !important;
+}
+.nav-link:hover {
+  color: rgb(19, 65, 50) !important;
+  cursor: pointer;
+}
+
+.navbar-brand:hover {
+  color: rgb(19, 65, 50) !important;
+}
+</style>
