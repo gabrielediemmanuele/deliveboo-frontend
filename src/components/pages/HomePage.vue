@@ -77,24 +77,38 @@ export default {
 
 <template>
   <div class="container-home">
-    <div class="cont-slogan">Mangia e bevi, QUANDO VUOI!</div>
-    <div class="cont-rider-img">
-      <img src="../../assets/img/" alt="" />
+    <div class="row mx-auto justify-content-around align-items-center">
+      <div class="col-lg-5 col-md-6 col-sm-6">
+        <div class="cont-rider-img d-flex justify-content-center">
+          <img
+            class="rider-scooter d-flex justify-content-center"
+            src="../../assets/img/Risorsa-5.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="cont-slogan text-center p-3">
+          <h1>con <strong>DeliveBoo</strong>, mangia e bevi</h1>
+          <h1 class="orange">QUANDO VUOI!</h1>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container">
-    <h3>I nostri ristoratori</h3>
+    <div class="our-resturants text-center mt-5">
+      <h1>I NOSTRI RISTORATORI</h1>
+    </div>
     <div class="container mt-5">
       <!--* Etichette Tipi // :class="type.active ? 'label-' + type.label : 'disabled'" -->
-      <h3>Seleziona un tipo</h3>
-      <div class="row">
+      <div class="row justify-content-around align-items-center">
         <div class="col-lg-3 col-md-4 col-sm-12">
           <span
             v-for="(type, index) in types"
             :key="type.id"
             :class="type.active ? 'label-' + type.label : 'disabled'"
             @click="toggleType(type)"
-            class="type-label mx-3 my-2"
+            class="type-label my-2"
           >
             {{ type.label }}
           </span>
@@ -120,22 +134,31 @@ export default {
 <style lang="scss" scoped>
 .container-home {
   width: 100%;
-  height: 350px;
-  border: 2px dashed red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  padding: 40px 0px;
+  background-image: url(../../assets/img/pattern.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   .cont-slogan {
-    width: 40%;
-    margin: auto 10px;
-    border: 2px dashed rgb(34, 0, 255);
+    color: rgb(48, 169, 129);
+    h1 {
+      text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    }
+    .orange {
+      color: rgb(234, 94, 61);
+      font-weight: bold;
+    }
   }
   .cont-rider-img {
-    width: 40%;
-    margin: auto 10px;
-    border: 2px dashed rgb(0, 255, 8);
+    .rider-scooter {
+      width: 70%;
+    }
   }
+}
+
+.our-resturants {
+  color: rgb(48, 169, 129);
+  text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
 .type-label {
   color: rgb(255, 255, 255);
