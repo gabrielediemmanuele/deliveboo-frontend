@@ -42,26 +42,44 @@ export default {
       return summ;
     },
   },
+  created() {
+    this.viewCart();
+  },
   methods: {
+    viewCart() {
+      if (localStorage.getItem("cart")) {
+        this.cart = JSON.parse(localStorage.getItem("cart"));
+        this.badge = this.cart.length;
+        this.totalprice = this.cart.reduce((total, item) => {
+          return total + item.qty * item.price;
+        }, 0);
+      }
+    },
     getQty(id) {
       let item = findById(this.cart, id);
       if (item !== undefined) return item.qty;
       else return 0;
     },
     added(item) {
-      let total = 0;
       let itemm = findById(this.cart, item.id);
       if (itemm !== undefined) {
         itemm.qty += 1;
+        this.saveCats();
       } else {
-        this.cart.push({
-          id: item.id,
-          name: item.name,
-          qty: 1,
-          image: item.image,
-          price: item.price,
-        });
+        this.cartadd.id = item.id;
+        this.cartadd.name = item.name;
+        this.cartadd.price = item.price;
+        this.cartadd.image = item.image;
+        this.cartadd.qty = 1;
+        this.cart.push(this.cartadd);
+        this.cartadd = {};
+        this.saveCats();
       }
+    },
+    saveCats() {
+      let parsed = JSON.stringify(this.cart);
+      localStorage.setItem("cart", parsed);
+      this.viewCart();
     },
     remove(id) {
       let item = findById(this.cart, id);
@@ -71,6 +89,7 @@ export default {
           let index = this.cart.indexOf(item);
           this.cart.splice(index, 1);
         }
+        this.saveCats();
       }
     },
 
