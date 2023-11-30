@@ -76,6 +76,7 @@ export default {
 </script>
 
 <template>
+  <!--* Qui si trova lo scooter, il background e lo slogan -->
   <div class="container-home">
     <div class="row mx-auto justify-content-around align-items-center">
       <div class="col-lg-5 col-md-6 col-sm-6">
@@ -95,20 +96,23 @@ export default {
       </div>
     </div>
   </div>
+
+  <!--! Container FILTRI e RISTORANTI -->
   <div class="container">
-    <div class="our-resturants text-center mt-5 mb-5">
+    <div class="our-resturants text-center mt-5 mb-2">
       <h1>I NOSTRI RISTORATORI</h1>
     </div>
-    <div class="container mt-5">
-      <!--* Etichette Tipi // :class="type.active ? 'label-' + type.label : 'disabled'" -->
+    <!--* Container delle label per i filtri. Nota: le condizioni gestiscono le immagini differenti -->
+    <div class="container mt-2">
       <div class="row">
         <div
           class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-flex justify-content-around"
           v-for="(type, index) in types"
         >
           <div
-            class="label-cont mt-5 mb-5 d-flex flex-column align-items-center"
+            class="label-cont mt-4 mb-4 d-flex flex-column align-items-center"
           >
+            <!--* Immagini -->
             <div class="filter-img-cont" :class="{ active: !type.active }">
               <img
                 v-if="type.id === 1"
@@ -131,6 +135,7 @@ export default {
                 alt=""
               />
             </div>
+            <!--* Labels -->
             <span
               :key="type.id"
               :class="type.active ? 'label-' + type.label : 'disabled'"
@@ -143,9 +148,8 @@ export default {
         </div>
       </div>
 
+      <!--*  Qui trovi le card dei ristoranti, stampate tramite componente! -->
       <div class="row">
-        <!--* Card Ristoranti -->
-        <!--! inserire all'interno di card il commento riga 87 - 90 -->
         <RestaurantCard
           v-for="restaurant in filteredRestaurants"
           :key="restaurant.id"
