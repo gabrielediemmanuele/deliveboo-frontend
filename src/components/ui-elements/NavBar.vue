@@ -17,7 +17,7 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
     <div class="container-fluid p-3">
-      <img class="cloche mx-1" src="../../assets/img/cloche-white.svg" alt="" />
+      <img class="cloche mx-1" src="/img/cloche-white.svg" alt="" />
       <router-link class="navbar-brand text-light" :to="{ name: 'home' }"
         >DeliveBoo</router-link
       >

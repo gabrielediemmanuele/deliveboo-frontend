@@ -82,7 +82,7 @@ export default {
         <div class="cont-rider-img d-flex justify-content-center">
           <img
             class="rider-scooter d-flex justify-content-center"
-            src="../../assets/img/Risorsa-5.png"
+            src="/img/Risorsa-5.png"
             alt=""
           />
         </div>
@@ -103,12 +103,33 @@ export default {
       <!--* Etichette Tipi // :class="type.active ? 'label-' + type.label : 'disabled'" -->
       <div class="row">
         <div
-          class="col-lg-3 col-md-4 col-sm-12 d-flex justify-content-around"
+          class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-flex justify-content-around"
           v-for="(type, index) in types"
         >
-          <div class="label-cont">
-            <div class="filter-img-cont">
-              <img src="" alt="" />
+          <div
+            class="label-cont mt-5 mb-5 d-flex flex-column align-items-center"
+          >
+            <div class="filter-img-cont" :class="{ active: !type.active }">
+              <img
+                v-if="type.id === 1"
+                src="/img/antique-pizzeria.jpg"
+                alt=""
+              />
+              <img
+                v-else-if="type.id === 2"
+                src="/img/Croissant-dolci-francesi-e1619542389827.jpg"
+                alt=""
+              />
+              <img
+                v-else-if="type.id === 3"
+                src="/img/Traditional-British-food.jpg"
+                alt=""
+              />
+              <img
+                v-else
+                src="/img/brown-bird-perching-during-daytime-wren-wren-wallpaper-preview.jpg"
+                alt=""
+              />
             </div>
             <span
               :key="type.id"
@@ -142,7 +163,7 @@ export default {
 .container-home {
   width: 100%;
   padding: 40px 0px;
-  background-image: url(../../assets/img/pattern.png);
+  background-image: url(img/pattern.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -167,17 +188,37 @@ export default {
   color: rgb(48, 169, 129);
   text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
-.type-label {
-  color: rgb(255, 255, 255);
-  background-color: rgb(192, 74, 0);
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-}
 
-.disabled {
-  background-color: gray;
+.label-cont {
+  position: relative;
+  .filter-img-cont {
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    &.active {
+      filter: grayscale(100%);
+    }
+  }
+  .type-label {
+    position: absolute;
+    top: 90px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(48, 169, 129);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .disabled {
+    background-color: gray;
+  }
 }
 </style>
