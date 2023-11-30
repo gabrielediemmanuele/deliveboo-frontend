@@ -13,7 +13,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-library.add(faPaperPlane);
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+library.add(faPaperPlane, faCartShopping);
 
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);
