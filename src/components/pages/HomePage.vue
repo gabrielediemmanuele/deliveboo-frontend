@@ -111,6 +111,7 @@ export default {
         >
           <div
             class="label-cont mt-4 mb-4 d-flex flex-column align-items-center"
+            @click="toggleType(type)"
           >
             <!--* Immagini -->
             <div class="filter-img-cont" :class="{ active: !type.active }">
@@ -139,7 +140,6 @@ export default {
             <span
               :key="type.id"
               :class="type.active ? 'label-' + type.label : 'disabled'"
-              @click="toggleType(type)"
               class="type-label my-2"
             >
               {{ type.label }}
@@ -190,11 +190,12 @@ export default {
 
 .our-resturants {
   color: rgb(48, 169, 129);
-  text-shadow: 1px 1px 2px rgb(0, 0, 0);
+  text-shadow: 0px 1px 2px rgb(0, 0, 0);
 }
 
 .label-cont {
   position: relative;
+  cursor: pointer;
   .filter-img-cont {
     width: 120px;
     height: 120px;
