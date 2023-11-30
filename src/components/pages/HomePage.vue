@@ -76,33 +76,80 @@ export default {
 </script>
 
 <template>
-  <div class="container-home-image">
-    <div class="container-text">
-      <h3>Welcome to DeliveBoo</h3>
+  <!--* Qui si trova lo scooter, il background e lo slogan -->
+  <div class="container-home">
+    <div class="row mx-auto justify-content-around align-items-center">
+      <div class="col-lg-5 col-md-6 col-sm-6">
+        <div class="cont-rider-img d-flex justify-content-center">
+          <img
+            class="rider-scooter d-flex justify-content-center"
+            src="/img/Risorsa-5.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="cont-slogan text-center p-3">
+          <h1>con <strong>DeliveBoo</strong>, mangia e bevi</h1>
+          <h1 class="orange">QUANDO VUOI!</h1>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!--! Container FILTRI e RISTORANTI -->
   <div class="container">
-    <h3>I nostri ristoratori</h3>
-    <div class="container mt-5">
-      <!--* Etichette Tipi // :class="type.active ? 'label-' + type.label : 'disabled'" -->
-      <h3>Seleziona un tipo</h3>
+    <div class="our-resturants text-center mt-5 mb-2">
+      <h1>I NOSTRI RISTORATORI</h1>
+    </div>
+    <!--* Container delle label per i filtri. Nota: le condizioni gestiscono le immagini differenti -->
+    <div class="container textured mt-2">
       <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-12">
-          <span
-            v-for="(type, index) in types"
-            :key="type.id"
-            :class="type.active ? 'label-' + type.label : 'disabled'"
+        <div
+          class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-flex justify-content-around"
+          v-for="(type, index) in types"
+        >
+          <div
+            class="label-cont mt-4 mb-4 d-flex flex-column align-items-center"
             @click="toggleType(type)"
-            class="type-label mx-3 my-2"
           >
-            {{ type.label }}
-          </span>
+            <!--* Immagini -->
+            <div class="filter-img-cont" :class="{ active: !type.active }">
+              <img
+                v-if="type.id === 1"
+                src="/img/antique-pizzeria.jpg"
+                alt=""
+              />
+              <img
+                v-else-if="type.id === 2"
+                src="/img/Croissant-dolci-francesi-e1619542389827.jpg"
+                alt=""
+              />
+              <img
+                v-else-if="type.id === 3"
+                src="/img/Traditional-British-food.jpg"
+                alt=""
+              />
+              <img
+                v-else
+                src="/img/brown-bird-perching-during-daytime-wren-wren-wallpaper-preview.jpg"
+                alt=""
+              />
+            </div>
+            <!--* Labels -->
+            <span
+              :key="type.id"
+              :class="type.active ? 'label-' + type.label : 'disabled'"
+              class="type-label my-2"
+            >
+              {{ type.label }}
+            </span>
+          </div>
         </div>
       </div>
 
+      <!--*  Qui trovi le card dei ristoranti, stampate tramite componente! -->
       <div class="row">
-        <!--* Card Ristoranti -->
-        <!--! inserire all'interno di card il commento riga 87 - 90 -->
         <RestaurantCard
           v-for="restaurant in filteredRestaurants"
           :key="restaurant.id"
@@ -117,41 +164,67 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.container-home-image {
+.container-home {
   width: 100%;
-  height: 350px;
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 40px 0px;
+  background-image: url(img/pattern.png);
   background-position: center;
-  background-image: url("https://cdn.vox-cdn.com/thumbor/5d_RtADj8ncnVqh-afV3mU-XQv0=/0x0:1600x1067/1200x900/filters:focal(672x406:928x662)/cdn.vox-cdn.com/uploads/chorus_image/image/57698831/51951042270_78ea1e8590_h.7.jpg");
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .container-text {
-    width: 80%;
-    height: 100px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    h3 {
-      color: white;
+  background-repeat: no-repeat;
+  background-size: contain;
+  .cont-slogan {
+    color: rgb(48, 169, 129);
+    .orange {
+      color: rgb(234, 94, 61);
+      font-weight: bold;
+    }
+  }
+  .cont-rider-img {
+    .rider-scooter {
+      width: 70%;
     }
   }
 }
-.type-label {
-  color: rgb(255, 255, 255);
-  background-color: rgb(192, 74, 0);
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
+
+.our-resturants {
+  color: rgb(48, 169, 129);
 }
 
-.disabled {
-  background-color: gray;
+.label-cont {
+  position: relative;
+  cursor: pointer;
+  .filter-img-cont {
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    &.active {
+      filter: grayscale(100%);
+    }
+  }
+  .type-label {
+    position: absolute;
+    top: 90px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(48, 169, 129);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .disabled {
+    background-color: gray;
+  }
+}
+
+.container .textured {
+  background-image: url(../../../public/img/pattern.png);
+  background-repeat: repeat;
 }
 </style>

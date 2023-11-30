@@ -20,17 +20,25 @@ export default {
 </script>
 
 <template>
-  <div class="col-lg-4 col-md-6 col-sm-12 mt-4 mb-2">
-    <div class="card" style="width: 18rem">
-      <!--* da modificare!  -->
-      <img :src="restaurant.image" class="card-img-top" alt="..." />
-      <div class="card-body">
+  <div
+    class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mt-4 mb-2"
+  >
+    <div class="restaurant-card d-flex flex-column mt-4">
+      <img :src="restaurant.image" class="restaurant-image" alt="..." />
+      <div class="restaurant-info mt-2">
         <h5 class="card-title">{{ restaurant.name }}</h5>
         <p class="card-text">{{ restaurant.description }}</p>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ restaurant.address }}</li>
-        <li class="list-group-item">{{ restaurant.phone_number }}</li>
+      <ul class="list-group list-group-flush mt-2">
+        <li class="list-group-item">
+          <strong>Indirizzo:</strong> {{ restaurant.address }}
+        </li>
+        <li class="list-group-item">
+          <strong>Telefono:</strong> {{ restaurant.phone_number }}
+          <hr />
+        </li>
+      </ul>
+      <div class="d-flex flex-wrap justify-content-center">
         <li
           class="list-group-item type-label d-flex justify-content-center"
           v-for="(type, index) in restaurant.types"
@@ -39,29 +47,75 @@ export default {
         >
           {{ type.label }}
         </li>
-      </ul>
-      <div class="card-body">
-        <router-link
-          :to="{ name: 'restaurant', params: { restaurantId: restaurant.id } }"
-          class="btn btn-primary mt-1 my-2 mx-5"
-          >Visita il ristorante</router-link
-        >
       </div>
+      <router-link
+        :to="{ name: 'restaurant', params: { restaurantId: restaurant.id } }"
+        class="btn my-3 mx-3"
+        >Visita il ristorante</router-link
+      >
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.restaurant-card {
+  width: 250px;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 4px 0px gray;
+  padding: 10px;
+  transition: all 0.5s;
+  user-select: none;
+  background-color: white;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  .restaurant-image {
+    border-radius: 20px;
+  }
+
+  .restaurant-info {
+    h5 {
+      color: rgb(234, 94, 61);
+    }
+  }
+  .list-group {
+    font-size: 16px;
+    text-align: start;
+    .list-group-item {
+      margin: 5px 0px !important;
+      padding: 0 !important;
+      hr {
+        margin: 2px;
+      }
+      strong {
+        color: rgb(48, 169, 129);
+      }
+    }
+  }
+
+  .btn {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(234, 94, 61);
+    color: rgb(234, 94, 61);
+
+    &:hover {
+      background-color: rgb(234, 94, 61);
+      color: white;
+    }
+  }
+}
 .type-label {
   color: rgb(255, 255, 255);
-  background-color: rgb(192, 74, 0);
-  padding: 5px 10px;
+  background-color: rgb(234, 94, 61);
+  padding: 2px 3px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
+  font-size: 12px;
   cursor: pointer;
-  width: 40%;
-  text-align: center;
-  margin: 5px auto;
+  width: 30%;
+  margin: 5px 5px;
 }
 </style>
