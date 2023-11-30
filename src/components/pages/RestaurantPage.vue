@@ -12,10 +12,12 @@ export default {
       cart: [],
       cartadd: {
         id: "",
+        restaurantId: "",
         name: "",
         price: "",
         image: "",
       },
+      showModal: false,
     };
   },
 
@@ -46,6 +48,22 @@ export default {
     this.viewCart();
   },
   methods: {
+    fetchDishes() {
+      // qui si farà la chiamata axios per il singolo ristorante.
+      //dentro RestaurantLayout ci sarà la prop di ristorante.
+      //e ci sarà anche tutta la struttura del layout!
+      axios
+        .get(
+          this.baseUrl + `restaurants/${this.$route.params.restaurantId}/dishes`
+        )
+        .then((response) => {
+          this.dishes = response.data;
+        })
+
+        .catch((error) => {
+          console.error("Error fetching dishes:", error);
+        });
+    },
     viewCart() {
       if (localStorage.getItem("cart")) {
         this.cart = JSON.parse(localStorage.getItem("cart"));
@@ -61,12 +79,31 @@ export default {
       else return 0;
     },
     added(item) {
+      // Verifica se il carrello è vuoto
+      if (this.cart.length === 0) {
+        this.addToCart(item);
+      } else {
+        // Verifica se il piatto appartiene allo stesso ristorante degli altri piatti nel carrello
+        const isSameRestaurant = this.cart.every(
+          (cartItem) => cartItem.restaurantId === item.restaurant_id
+        );
+
+        if (isSameRestaurant) {
+          this.addToCart(item);
+        } else {
+          // Mostra la modale
+          this.showModal = true;
+        }
+      }
+    },
+    addToCart(item) {
       let itemm = findById(this.cart, item.id);
       if (itemm !== undefined) {
         itemm.qty += 1;
         this.saveCats();
       } else {
         this.cartadd.id = item.id;
+        this.cartadd.restaurantId = item.restaurant_id;
         this.cartadd.name = item.name;
         this.cartadd.price = item.price;
         this.cartadd.image = item.image;
@@ -75,6 +112,11 @@ export default {
         this.cartadd = {};
         this.saveCats();
       }
+    },
+    clearCart() {
+      this.cart = [];
+      this.saveCats();
+      this.showModal = false;
     },
     saveCats() {
       let parsed = JSON.stringify(this.cart);
@@ -91,23 +133,6 @@ export default {
         }
         this.saveCats();
       }
-    },
-
-    fetchDishes() {
-      // qui si farà la chiamata axios per il singolo ristorante.
-      //dentro RestaurantLayout ci sarà la prop di ristorante.
-      //e ci sarà anche tutta la struttura del layout!
-      axios
-        .get(
-          this.baseUrl + `restaurants/${this.$route.params.restaurantId}/dishes`
-        )
-        .then((response) => {
-          this.dishes = response.data;
-        })
-
-        .catch((error) => {
-          console.error("Error fetching dishes:", error);
-        });
     },
   },
   mounted() {
@@ -136,6 +161,45 @@ export default {
       <h3>Cart Total: ${{ totalItem }}</h3>
     </div>
     <h1 class="bg-primary text-center mt-5" v-else>Il tuo carrello è vuoto</h1>
+  </div>
+  <!-- Modale -->
+  <div
+    class="modal fade"
+    id="restaurantMismatchModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="restaurantMismatchModalLabel"
+    aria-hidden="true"
+    :class="{ show: showModal, 'd-block': showModal }"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="restaurantMismatchModalLabel">
+            Attenzione!
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Non puoi aggiungere piatti di altri ristoranti al carrello.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" @click="clearCart">
+            Svuota Carrello
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Annulla
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
