@@ -67,6 +67,7 @@ export default {
     viewCart() {
       if (localStorage.getItem("cart")) {
         this.cart = JSON.parse(localStorage.getItem("cart"));
+        // Questo serve per mostrare il badge con il numero di prodotti nel carrello
         this.badge = this.cart.length;
         this.totalprice = this.cart.reduce((total, item) => {
           return total + item.qty * item.price;
