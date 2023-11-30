@@ -96,22 +96,29 @@ export default {
     </div>
   </div>
   <div class="container">
-    <div class="our-resturants text-center mt-5">
+    <div class="our-resturants text-center mt-5 mb-5">
       <h1>I NOSTRI RISTORATORI</h1>
     </div>
     <div class="container mt-5">
       <!--* Etichette Tipi // :class="type.active ? 'label-' + type.label : 'disabled'" -->
-      <div class="row justify-content-around align-items-center">
-        <div class="col-lg-3 col-md-4 col-sm-12">
-          <span
-            v-for="(type, index) in types"
-            :key="type.id"
-            :class="type.active ? 'label-' + type.label : 'disabled'"
-            @click="toggleType(type)"
-            class="type-label my-2"
-          >
-            {{ type.label }}
-          </span>
+      <div class="row">
+        <div
+          class="col-lg-3 col-md-4 col-sm-12 d-flex justify-content-around"
+          v-for="(type, index) in types"
+        >
+          <div class="label-cont">
+            <div class="filter-img-cont">
+              <img src="" alt="" />
+            </div>
+            <span
+              :key="type.id"
+              :class="type.active ? 'label-' + type.label : 'disabled'"
+              @click="toggleType(type)"
+              class="type-label my-2"
+            >
+              {{ type.label }}
+            </span>
+          </div>
         </div>
       </div>
 
