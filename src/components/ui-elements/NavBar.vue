@@ -33,7 +33,7 @@ export default {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
           <li class="nav-item">
             <router-link
               class="nav-link active text-light mx-2"
@@ -51,6 +51,9 @@ export default {
             <a class="nav-link active text-light mx-2" aria-current="page"
               >Lavora con Noi</a
             >
+          </li>
+          <li>
+            <font-awesome-icon icon="fa-solid fa-cart-shopping" size="xl" />
           </li>
         </ul>
       </div>
@@ -81,5 +84,13 @@ export default {
 
 .navbar-brand:hover {
   color: rgb(19, 65, 50) !important;
+}
+
+.fa-cart-shopping {
+  margin-left: 20px;
+  color: white;
+  &:hover {
+    color: rgb(234, 94, 61);
+  }
 }
 </style>

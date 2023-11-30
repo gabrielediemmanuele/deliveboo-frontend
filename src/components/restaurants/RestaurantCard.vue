@@ -66,6 +66,7 @@ export default {
   padding: 10px;
   transition: all 0.5s;
   user-select: none;
+  background-color: white;
 
   &:hover {
     transform: scale(1.05);

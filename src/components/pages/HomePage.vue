@@ -103,7 +103,7 @@ export default {
       <h1>I NOSTRI RISTORATORI</h1>
     </div>
     <!--* Container delle label per i filtri. Nota: le condizioni gestiscono le immagini differenti -->
-    <div class="container mt-2">
+    <div class="container textured mt-2">
       <div class="row">
         <div
           class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-flex justify-content-around"
@@ -173,9 +173,6 @@ export default {
   background-size: contain;
   .cont-slogan {
     color: rgb(48, 169, 129);
-    h1 {
-      text-shadow: 1px 1px 2px rgb(0, 0, 0);
-    }
     .orange {
       color: rgb(234, 94, 61);
       font-weight: bold;
@@ -190,7 +187,6 @@ export default {
 
 .our-resturants {
   color: rgb(48, 169, 129);
-  text-shadow: 0px 1px 2px rgb(0, 0, 0);
 }
 
 .label-cont {
@@ -225,5 +221,10 @@ export default {
   .disabled {
     background-color: gray;
   }
+}
+
+.container .textured {
+  background-image: url(../../../public/img/pattern.png);
+  background-repeat: repeat;
 }
 </style>
