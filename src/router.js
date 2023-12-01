@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./components/pages/HomePage.vue";
 import RestaurantPage from "./components/pages/RestaurantPage.vue";
 
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -17,6 +18,7 @@ const router = createRouter({
       name: "restaurant",
       component: RestaurantPage,
     },
+
   ],
 });
 
