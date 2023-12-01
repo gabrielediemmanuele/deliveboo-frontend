@@ -21,7 +21,7 @@ export default {
 
 <template>
   <div
-    class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mt-4 mb-2"
+    class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mt-4 mb-2"
   >
     <div class="restaurant-card d-flex flex-column mt-4">
       <img :src="restaurant.image" class="restaurant-image" alt="..." />
