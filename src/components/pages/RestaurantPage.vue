@@ -162,9 +162,7 @@ export default {
       <div v-if="!totalItem == 0">
         <h3>Cart Total: € {{ totalItem }}</h3>
       </div>
-      <h1 class="bg-primary text-center mt-5" v-else>
-        Il tuo carrello è vuoto
-      </h1>
+      <h1 class="text-center mt-5 p-1" v-else>Il tuo carrello è vuoto</h1>
     </div>
     <!-- Modale -->
     <div
@@ -213,6 +211,15 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.row {
+  h1 {
+    border-radius: 20px;
+    background-color: rgb(234, 94, 61);
+    color: white;
+    width: 80%;
+    margin: 0px auto;
+  }
+}
 .card {
   width: 40%;
   margin: 10px 10px;
