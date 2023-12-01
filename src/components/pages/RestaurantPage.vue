@@ -159,12 +159,12 @@ export default {
       class="images-container d-flex justify-content-center align-items-end"
       :style="{ backgroundImage: 'url(' + restaurantInfo.image + ')' }"
     >
-      <img src="" alt="" class="profile-image" />
+      <img src="/img/chefremy.jpg" alt="" class="profile-image" />
     </div>
     <!--* Container Testi Pagina Ristorante -->
-    <div class="container">
-      <h1>Nome Ristorante</h1>
-      <p>Descrizione Ristorante</p>
+    <div class="container text">
+      <h1>{{ restaurantInfo.name }}</h1>
+      <p>{{ restaurantInfo.description }}</p>
     </div>
     <!--* Layout delle card dei PIATTI -->
     <div class="container">
@@ -228,26 +228,37 @@ export default {
 
 <style lang="scss" scoped>
 //Container Immagine
-
 .images-container {
   width: 100%;
   height: 300px;
-  border: 2px dashed red;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  margin-bottom: 80px;
 
   position: relative;
   .profile-image {
     width: 200px;
     height: 200px;
-    border: 2px dashed lime;
+    border: 5px solid rgb(255, 255, 255);
     position: absolute;
     bottom: -70px;
     border-radius: 50%;
   }
 }
 
+//Container Testi
+.container.text {
+  text-align: center !important;
+
+  h1 {
+    font-family: fantasy;
+    color: rgb(234, 94, 61);
+  }
+  p {
+    font-style: italic;
+  }
+}
 .row {
   h1 {
     border-radius: 20px;
