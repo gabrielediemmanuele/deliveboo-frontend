@@ -10,6 +10,7 @@ export default {
       baseUrl: "http://localhost:8000/api/",
       dishes: [],
       cart: [],
+      restaurantInfo: [],
       cartKey: 0,
       cartadd: {
         id: "",
@@ -46,6 +47,13 @@ export default {
     this.viewCart();
   },
   methods: {
+    fetchRestaurant() {
+      axios
+        .get(this.baseUrl + `restaurants/${this.$route.params.restaurantId}`)
+        .then((response) => {
+          this.restaurantInfo = response.data;
+        });
+    },
     fetchDishes() {
       // qui si farà la chiamata axios per il singolo ristorante.
       //dentro RestaurantLayout ci sarà la prop di ristorante.
@@ -138,17 +146,20 @@ export default {
   },
   mounted() {
     this.fetchDishes();
+    this.fetchRestaurant();
   },
 };
 </script>
 
 <template>
   <!--* Restaurant Page Layout - Container Totale -->
-  <div class="container-fluid d-flex flex-column align-items-center">
+  <div class="total-container">
     <!--* Container per l'immagine del ristorante -->
-    <div class="container-fluid">
-      <img src="" alt="" />
-      <img src="" alt="" />
+    <div
+      class="images-container d-flex justify-content-center align-items-end"
+      :style="{ backgroundImage: 'url(' + restaurantInfo.image + ')' }"
+    >
+      <img src="" alt="" class="profile-image" />
     </div>
     <!--* Container Testi Pagina Ristorante -->
     <div class="container">
@@ -216,6 +227,27 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+//Container Immagine
+
+.images-container {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed red;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  position: relative;
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed lime;
+    position: absolute;
+    bottom: -70px;
+    border-radius: 50%;
+  }
+}
+
 .row {
   h1 {
     border-radius: 20px;
