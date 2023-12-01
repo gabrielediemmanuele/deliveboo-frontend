@@ -174,6 +174,7 @@ export default {
 .socialContainer {
   width: 35px;
   height: 35px;
+  border-radius: 5px;
   background-color: rgb(234, 94, 61);
   display: flex;
   align-items: center;

@@ -169,25 +169,33 @@ export default {
     <!--* Container Testi Pagina Ristorante -->
     <div class="container text">
       <h1>{{ restaurantInfo.name }}</h1>
-      <p>{{ restaurantInfo.description }}</p>
+      <p class="mb-5">{{ restaurantInfo.description }}</p>
+      <h2 class="my-3">I nostri piatti</h2>
     </div>
     <!--* Layout delle card dei PIATTI -->
     <div class="container">
       <div class="row">
         <div
-          class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mt-4 mb-2"
+          class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12 d-flex justify-content-center mt-4 mb-2"
           v-for="dish in dishes"
           :key="dish.id + cartKey"
         >
           <div class="dish-card">
-            <img :src="dish.image" class="dish-image" alt="" />
+            <img :src="dish.image" class="dish-image mb-2" alt="" />
             <h5 class="card-title">{{ dish.name }}</h5>
-            <p class="card-text">{{ dish.price }}</p>
-            <span
-              class="btn btn-success d-flex align-items-center px-4 ms-add-btn"
-              @click="added(dish)"
-              >Aggiungi</span
-            >
+            <div class="description-cont my-2">
+              <p class="card-text">{{ dish.description }}</p>
+            </div>
+            <div class="btn-container d-flex justify-content-between">
+              <span
+                class="btn btn-success d-flex justify-content-center align-items-center ms-add-btn"
+                @click="added(dish)"
+                >+ Aggiungi</span
+              >
+              <span class="btn-price d-flex align-items-center"
+                >€ {{ dish.price }}</span
+              >
+            </div>
           </div>
         </div>
         <!--! Nuova card v2 -->
@@ -267,29 +275,100 @@ export default {
   p {
     font-style: italic;
   }
+  h2 {
+    color: rgb(48, 169, 129);
+  }
 }
 
 //STYLE DELLE DISH CARD
 .dish-card {
-  width: 250px;
-  height: 100%;
+  width: 180px;
   border-radius: 20px;
   box-shadow: 0px 0px 4px 0px gray;
   padding: 10px;
   transition: all 0.5s;
   user-select: none;
   background-color: white;
+  &:hover {
+    transform: scale(1.05);
+  }
   .dish-image {
     width: 100%;
     border-radius: 20px;
   }
 
-  button {
-    width: 30%;
-    margin: 10px 0px;
+  h5 {
+    color: rgb(234, 94, 61);
+    font-weight: bold;
+  }
+  .description-cont {
+    height: 50px;
+    border-radius: 5px;
+    overflow-y: auto;
+    box-shadow: 0px 0px 1px 0px rgb(135, 135, 135) inset;
+    padding: 3px;
+    font-size: 12px;
   }
 }
 
+//Button Container
+.btn-container {
+  margin-top: 10px;
+  .btn {
+    border-radius: 60px !important;
+    padding: 4px 8px !important;
+    font-size: 12px;
+    position: relative;
+    background-color: #04aa6d;
+    border: none;
+    color: #ffffff;
+    user-select: none;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 4em;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: all 0.5s;
+      box-shadow: 0 0 5px 10px rgb(19, 65, 50);
+    }
+
+    &:active:after {
+      box-shadow: 0 0 0 0 rgb(19, 65, 50);
+      position: absolute;
+      border-radius: 4em;
+      left: 0;
+      top: 0;
+      opacity: 1;
+      transition: 0s;
+    }
+
+    &:active {
+      top: 1px;
+    }
+  }
+  .btn-price {
+    border-radius: 60px !important;
+    box-shadow: 0px 0px 1px 0px rgb(135, 135, 135);
+    padding: 4px 8px !important;
+    background-color: white;
+    font-size: 12px;
+    font-weight: bold;
+    &:hover {
+      background-color: rgb(234, 94, 61);
+      color: white;
+    }
+  }
+}
 .row {
   h1 {
     border-radius: 20px;
