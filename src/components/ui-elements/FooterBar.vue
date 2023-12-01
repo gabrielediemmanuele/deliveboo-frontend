@@ -124,7 +124,7 @@ export default {
   background-color: rgb(48, 169, 129);
   box-sizing: border-box !important;
   width: 100% !important;
-  margin: 100px 0px 0px 0px;
+  margin-top: 80px !important;
 }
 .link-col {
   background-color: rgb(19, 65, 50) !important;

@@ -25,5 +25,8 @@ export default {
 <style lang="scss">
 body {
   padding-top: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 </style>
