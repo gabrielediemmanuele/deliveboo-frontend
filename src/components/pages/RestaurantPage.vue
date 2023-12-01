@@ -194,4 +194,28 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.row {
+  h1 {
+    border-radius: 20px;
+    background-color: rgb(234, 94, 61);
+    color: white;
+    width: 80%;
+    margin: 0px auto;
+  }
+}
+
+.card {
+  width: 40%;
+  margin: 10px 10px;
+  padding: 10px;
+
+  button {
+    width: 30%;
+    margin: 10px 0px;
+  }
+
+  h5 {
+    color: rgb(234, 94, 61);
+  }
+}</style>

@@ -1,5 +1,6 @@
 <script>
 import NavBar from "./components/ui-elements/NavBar.vue";
+import FooterBar from "./components/ui-elements/FooterBar.vue";
 
 export default {
   data() {
@@ -10,6 +11,7 @@ export default {
 
   components: {
     NavBar,
+    FooterBar,
   },
 };
 </script>
@@ -17,6 +19,14 @@ export default {
 <template>
   <NavBar></NavBar>
   <router-view></router-view>
+  <FooterBar></FooterBar>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+body {
+  padding-top: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+</style>
