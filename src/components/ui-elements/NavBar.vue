@@ -81,6 +81,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
 .cloche {
   width: 40px;
 }

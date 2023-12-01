@@ -46,7 +46,7 @@ export default {
 </script>
 
 <template>
-  <div class="footer-container mt-5 p-3">
+  <div class="footer-container p-3">
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-12 my-2">
         <div class="link-col">
@@ -124,6 +124,7 @@ export default {
   background-color: rgb(48, 169, 129);
   box-sizing: border-box !important;
   width: 100% !important;
+  margin: 100px 0px 0px 0px;
 }
 .link-col {
   background-color: rgb(19, 65, 50) !important;
