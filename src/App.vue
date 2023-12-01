@@ -22,4 +22,8 @@ export default {
   <FooterBar></FooterBar>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+body {
+  padding-top: 100px;
+}
+</style>

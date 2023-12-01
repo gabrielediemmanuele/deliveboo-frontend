@@ -171,7 +171,6 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  margin-top: 95px;
   .cont-slogan {
     color: rgb(48, 169, 129);
     .orange {
