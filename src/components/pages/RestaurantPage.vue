@@ -159,7 +159,12 @@ export default {
       class="images-container d-flex justify-content-center align-items-end"
       :style="{ backgroundImage: 'url(' + restaurantInfo.image + ')' }"
     >
-      <img src="/img/chefremy.jpg" alt="" class="profile-image" />
+      <img
+        v-if="restaurantInfo.id === 1"
+        src="/img/chefremy.jpg"
+        alt=""
+        class="profile-image"
+      />
     </div>
     <!--* Container Testi Pagina Ristorante -->
     <div class="container text">
@@ -169,57 +174,61 @@ export default {
     <!--* Layout delle card dei PIATTI -->
     <div class="container">
       <div class="row">
-        <div class="card" v-for="dish in dishes" :key="dish.id + cartKey">
-          <h5 class="card-title">{{ dish.name }}</h5>
-          <p class="card-text">{{ dish.price }}</p>
-          <span
-            class="btn btn-success d-flex align-items-center px-4 ms-add-btn"
-            @click="added(dish)"
-            >Aggiungi</span
-          >
+        <div
+          class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mt-4 mb-2"
+          v-for="dish in dishes"
+          :key="dish.id + cartKey"
+        >
+          <div class="dish-card">
+            <img :src="dish.image" class="dish-image" alt="" />
+            <h5 class="card-title">{{ dish.name }}</h5>
+            <p class="card-text">{{ dish.price }}</p>
+            <span
+              class="btn btn-success d-flex align-items-center px-4 ms-add-btn"
+              @click="added(dish)"
+              >Aggiungi</span
+            >
+          </div>
         </div>
+        <!--! Nuova card v2 -->
       </div>
     </div>
-    <!--* Modale -->
-    <div
-      class="modal fade"
-      id="restaurantMismatchModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="restaurantMismatchModalLabel"
-      aria-hidden="true"
-      :class="{ show: showModal, 'd-block': showModal }"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="restaurantMismatchModalLabel">
-              Attenzione!
-            </h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Non puoi aggiungere piatti di altri ristoranti al carrello.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" @click="clearCart">
-              Svuota Carrello
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Annulla
-            </button>
-          </div>
+  </div>
+  <!--* Modale -->
+  <div
+    class="modal fade"
+    id="restaurantMismatchModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="restaurantMismatchModalLabel"
+    aria-hidden="true"
+    :class="{ show: showModal, 'd-block': showModal }"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="restaurantMismatchModalLabel">
+            Attenzione!
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Non puoi aggiungere piatti di altri ristoranti al carrello.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" @click="clearCart">
+            Svuota Carrello
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Annulla
+          </button>
         </div>
       </div>
     </div>
@@ -259,6 +268,28 @@ export default {
     font-style: italic;
   }
 }
+
+//STYLE DELLE DISH CARD
+.dish-card {
+  width: 250px;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 4px 0px gray;
+  padding: 10px;
+  transition: all 0.5s;
+  user-select: none;
+  background-color: white;
+  .dish-image {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  button {
+    width: 30%;
+    margin: 10px 0px;
+  }
+}
+
 .row {
   h1 {
     border-radius: 20px;
@@ -266,21 +297,6 @@ export default {
     color: white;
     width: 80%;
     margin: 0px auto;
-  }
-}
-
-.card {
-  width: 40%;
-  margin: 10px 10px;
-  padding: 10px;
-
-  button {
-    width: 30%;
-    margin: 10px 0px;
-  }
-
-  h5 {
-    color: rgb(234, 94, 61);
   }
 }
 </style>
