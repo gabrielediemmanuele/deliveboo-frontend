@@ -75,30 +75,18 @@ export default {
   <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
     <div class="container-fluid p-3">
       <img class="cloche mx-1" src="/img/cloche-white.svg" alt="" />
-      <router-link class="navbar-brand text-light" :to="{ name: 'home' }"
-        >DeliveBoo</router-link
-      >
-      <button
-        class="navbar-toggler bg-light"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <router-link class="navbar-brand text-light" :to="{ name: 'home' }">DeliveBoo</router-link>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
           <li class="nav-item">
-            <router-link
-              class="nav-link active text-light mx-2"
-              aria-current="page"
-              :to="{ name: 'home' }"
-              >Homepage</router-link
-            >
+            <router-link class="nav-link active text-light mx-2" aria-current="page"
+              :to="{ name: 'home' }">Homepage</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link text-light" href="#">Contattaci</a>
@@ -107,13 +95,8 @@ export default {
             <a class="nav-link text-light" href="#">Lavora con noi</a>
           </li>
           <li class="nav-item">
-            <button
-              class="btn"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasRight"
-              aria-controls="offcanvasRight"
-            >
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight">
               <font-awesome-icon icon="fa-solid fa-cart-shopping" size="xl" />
             </button>
           </li>
@@ -123,30 +106,21 @@ export default {
   </nav>
 
   <!-- OFFCANVAS -->
-  <div
-    class="offcanvas offcanvas-end"
-    tabindex="-1"
-    id="offcanvasRight"
-    aria-labelledby="offcanvasRightLabel"
-  >
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-body">
       <div v-if="cart.length > 0">
-        <div v-for="item in cart" :key="item.id + cartKey" class="card">
-          <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text">{{ item.price }}</p>
+        <div v-for="item in  cart " :key="item.id + cartKey" class="card">
+          <h5 class="card-title">Nome piatto: {{ item.name }}</h5>
+          <p class="card-text">Prezzo: {{ item.price }} €</p>
           <button type="button" class="btn btn-success" @click="added(item)">
             +
           </button>
-          <button
-            class="btn btn-warning"
-            type="button"
-            @click="remove(item.id)"
-          >
+          <button class="btn btn-warning" type="button" @click="remove(item.id)">
             -
           </button>
           <h3 class="mt-2" v-text="getQty(item.id)"></h3>
         </div>
-        <h3>Cart Total: ${{ cartTotal }}</h3>
+        <h3>Totale: €{{ cartTotal }}</h3>
       </div>
       <div v-else>
         <h1 class="bg-primary text-center mt-5">Il tuo carrello è vuoto</h1>
