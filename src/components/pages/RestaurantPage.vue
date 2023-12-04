@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import PaymentForm from "./PaymentForm.vue";
 
 function findById(arr, id) {
   return arr.find((x) => x.id === id);
@@ -22,7 +23,7 @@ export default {
       showModal: false,
     };
   },
-
+  components: { PaymentForm },
   computed: {
     cartTotal() {
       let i;
@@ -47,6 +48,18 @@ export default {
     this.viewCart();
   },
   methods: {
+    removeFromCart(id) {
+      // Implementa la logica per rimuovere un elemento dal carrello
+      let item = findById(this.cart, id);
+      if (item !== undefined) {
+        item.qty -= 1;
+        if (item.qty <= 0) {
+          let index = this.cart.indexOf(item);
+          this.cart.splice(index, 1);
+        }
+        this.saveCats();
+      }
+    },
     fetchRestaurant() {
       axios
         .get(this.baseUrl + `restaurants/${this.$route.params.restaurantId}`)
@@ -200,6 +213,12 @@ export default {
         <h1 class="bg-primary text-center mt-5" v-else>
           Il tuo carrello è vuoto
         </h1>
+        <PaymentForm
+          :cart="cart"
+          :totalItem="totalItem"
+          @remove="removeFromCart"
+          @add="addToCart"
+        ></PaymentForm>
       </div>
     </div>
   </div>
