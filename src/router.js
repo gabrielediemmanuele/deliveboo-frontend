@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 /* importare le pagine  */
 import HomePage from "./components/pages/HomePage.vue";
 import RestaurantPage from "./components/pages/RestaurantPage.vue";
+import PaymentForm from "./components/pages/PaymentForm.vue";
 
 
 const router = createRouter({
@@ -17,6 +18,11 @@ const router = createRouter({
       path: "/restaurant/:restaurantId",
       name: "restaurant",
       component: RestaurantPage,
+    },
+    {
+      path: '/payment',
+      name: 'payment',
+      component: PaymentForm,
     },
 
   ],
