@@ -167,6 +167,19 @@ export default {
         alt=""
         class="profile-image"
       />
+      <img
+        v-else-if="restaurantInfo.id === 2"
+        src="/img/krustylogo.png"
+        alt=""
+        class="profile-image"
+      />
+      <img
+        v-else-if="restaurantInfo.id === 3"
+        src="/img/Upizzaiuole.png"
+        alt=""
+        class="profile-image"
+      />
+      <img v-else src="/img/paiolomagico.jpg" alt="" class="profile-image" />
     </div>
     <!--* Container Testi Pagina Ristorante -->
     <div class="container text">
