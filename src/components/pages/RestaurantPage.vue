@@ -219,37 +219,37 @@ export default {
   </div>
   <!--* Modale -->
   <div
-    class="modal fade"
+    class="modal"
     id="restaurantMismatchModal"
     tabindex="-1"
-    role="dialog"
     aria-labelledby="restaurantMismatchModalLabel"
-    aria-hidden="true"
     :class="{ show: showModal, 'd-block': showModal }"
   >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="restaurantMismatchModalLabel">
-            Attenzione!
-          </h5>
+          <h1 class="modal-title fs-5" id="restaurantMismatchModalLabel">
+            Attenzione
+          </h1>
           <button
             type="button"
-            class="close"
-            data-dismiss="modal"
+            class="btn-close"
             aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
+            @click="showModal = false"
+          ></button>
         </div>
         <div class="modal-body">
           Non puoi aggiungere piatti di altri ristoranti al carrello.
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" @click="clearCart">
+          <button type="button" class="btn btn-primary" @click="clearCart">
             Svuota Carrello
           </button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="showModal = false"
+          >
             Annulla
           </button>
         </div>
