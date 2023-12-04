@@ -85,18 +85,30 @@ export default {
   <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
     <div class="container-fluid p-3">
       <img class="cloche mx-1" src="/img/cloche-white.svg" alt="" />
-      <router-link class="navbar-brand text-light" :to="{ name: 'home' }">DeliveBoo</router-link>
-      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
+      <router-link class="navbar-brand text-light" :to="{ name: 'home' }"
+        >DeliveBoo</router-link
+      >
+      <button
+        class="navbar-toggler bg-light"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
           <li class="nav-item">
-            <router-link class="nav-link active text-light mx-2" aria-current="page"
-              :to="{ name: 'home' }">Homepage</router-link>
+            <router-link
+              class="nav-link active text-light mx-2"
+              aria-current="page"
+              :to="{ name: 'home' }"
+              >Homepage</router-link
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link text-light" href="#">Contattaci</a>
@@ -105,8 +117,13 @@ export default {
             <a class="nav-link text-light" href="#">Lavora con noi</a>
           </li>
           <li class="nav-item">
-            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-              aria-controls="offcanvasRight">
+            <button
+              class="btn"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight"
+            >
               <font-awesome-icon icon="fa-solid fa-cart-shopping" size="xl" />
             </button>
           </li>
@@ -116,28 +133,43 @@ export default {
   </nav>
 
   <!-- OFFCANVAS -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+  >
     <h1>Carrello</h1>
     <div class="offcanvas-body">
       <div v-if="cart.length > 0">
-        <div v-for="item in  cart " :key="item.id + cartKey" class="card">
+        <div v-for="item in cart" :key="item.id" class="card">
           <h5 class="card-title">Nome piatto: {{ item.name }}</h5>
           <p class="card-text">Prezzo: €{{ item.price }}</p>
           <button type="button" class="btn btn-success" @click="added(item)">
             +
           </button>
-          <button class="btn btn-warning" type="button" @click="remove(item.id)">
+          <button
+            class="btn btn-warning"
+            type="button"
+            @click="remove(item.id)"
+          >
             -
           </button>
-          <button class="btn btn-danger trash d-flex justify-content-center align-items-center" type="button"
-            @click="clearCart()">
+          <button
+            class="btn btn-danger trash d-flex justify-content-center align-items-center"
+            type="button"
+            @click="clearCart()"
+          >
             Svuota carrello
           </button>
-          <h3 class="mt-2">{{ getQty(item.id) }} x {{ item.name }} </h3>
+          <h3 class="mt-2">{{ getQty(item.id) }} x {{ item.name }}</h3>
         </div>
         <h3>Totale: €{{ cartTotal }}</h3>
-        <router-link @click="paymentSection" class="btn btn-warning d-flex justify-content-center align-items-center"
-          :to="{ name: 'payment' }" aria-current="page">Vai al checkout
+        <router-link
+          class="btn btn-warning d-flex justify-content-center align-items-center"
+          :to="{ name: 'payment' }"
+          aria-current="page"
+          >Vai al checkout
         </router-link>
       </div>
       <div v-else>
