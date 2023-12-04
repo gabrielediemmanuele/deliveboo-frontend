@@ -1,83 +1,7 @@
 <script>
+import PaymentForm from "../pages/PaymentForm.vue";
 export default {
-  data() {
-    return {
-      cart: [],
-      cartKey: 0,
-    };
-  },
-  computed: {
-    cartTotal() {
-      const total = this.cart.reduce(
-        (total, item) => total + item.price * item.qty,
-        0
-      );
-
-      // Utilizza .toFixed(2) per arrotondare il totale a due cifre decimali
-      return total.toFixed(2);
-    },
-  },
-  methods: {
-    getQty(id) {
-      let item = this.cart.find((item) => item.id === id);
-      if (item !== undefined) return item.qty;
-      else return 0;
-    },
-    added(item) {
-      let itemInCart = this.cart.find((cartItem) => cartItem.id === item.id);
-
-      if (itemInCart !== undefined) {
-        itemInCart.qty += 1;
-      } else {
-        item.qty = 1;
-        this.cart.push({ ...item, qty: 1 });
-      }
-      this.saveCart();
-      this.cartKey += 1;
-      // Aggiungi un console.log per visualizzare un messaggio o i dati
-      console.log("Item added:", item); // Ad esempio, qui mostrerà l'oggetto item aggiunto
-
-      // Oppure stampa il carrello per verificare se è stato aggiornato correttamente
-      console.log("Updated cart:", this.cart);
-    },
-
-    remove(id) {
-      let index = this.cart.findIndex((item) => item.id === id);
-      if (index !== -1) {
-        let item = this.cart[index];
-        item.qty -= 1;
-        if (item.qty <= 0) {
-          this.cart.splice(index, 1);
-        }
-        this.saveCart();
-        this.cartKey += 1;
-      }
-    },
-    saveCart() {
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-    },
-    clearCart() {
-      this.cart = [];
-      this.saveCart();
-    },
-
-    loadCart() {
-      const cart = localStorage.getItem("cart");
-      if (cart) {
-        this.cart = JSON.parse(cart);
-      } else {
-        this.cart = []; // Assicura che se non c'è nessun carrello salvato, l'array cart sia vuoto
-      }
-    },
-  },
-  created() {
-    this.loadCart();
-
-    // Aggiorna il carrello quando viene rilevato un cambiamento nello storage locale
-    window.addEventListener("cart-updated", () => {
-      this.loadCart();
-    });
-  },
+  components: { PaymentForm },
 };
 </script>
 
@@ -133,50 +57,6 @@ export default {
   </nav>
 
   <!-- OFFCANVAS -->
-  <div
-    class="offcanvas offcanvas-end"
-    tabindex="-1"
-    id="offcanvasRight"
-    aria-labelledby="offcanvasRightLabel"
-  >
-    <h1>Carrello</h1>
-    <div class="offcanvas-body">
-      <div v-if="cart.length > 0">
-        <div v-for="item in cart" :key="item.id" class="card">
-          <h5 class="card-title">Nome piatto: {{ item.name }}</h5>
-          <p class="card-text">Prezzo: €{{ item.price }}</p>
-          <button type="button" class="btn btn-success" @click="added(item)">
-            +
-          </button>
-          <button
-            class="btn btn-warning"
-            type="button"
-            @click="remove(item.id)"
-          >
-            -
-          </button>
-          <button
-            class="btn btn-danger trash d-flex justify-content-center align-items-center"
-            type="button"
-            @click="clearCart()"
-          >
-            Svuota carrello
-          </button>
-          <h3 class="mt-2">{{ getQty(item.id) }} x {{ item.name }}</h3>
-        </div>
-        <h3>Totale: €{{ cartTotal }}</h3>
-        <router-link
-          class="btn btn-warning d-flex justify-content-center align-items-center"
-          :to="{ name: 'payment' }"
-          aria-current="page"
-          >Vai al checkout
-        </router-link>
-      </div>
-      <div v-else>
-        <h1 class="bg-primary text-center mt-5">Il tuo carrello è vuoto</h1>
-      </div>
-    </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
