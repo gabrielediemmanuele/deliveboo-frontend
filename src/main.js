@@ -19,7 +19,9 @@ import { faCoins } from "@fortawesome/free-solid-svg-icons";
 
 import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faCartShopping, faCoins, faCartArrowDown);
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faCartShopping, faCoins, faCartArrowDown, faHouse);
 
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);

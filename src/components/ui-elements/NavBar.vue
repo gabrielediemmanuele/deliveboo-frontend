@@ -139,7 +139,7 @@ export default {
     id="offcanvasRight"
     aria-labelledby="offcanvasRightLabel"
   >
-    <h1>Carrello</h1>
+    <h1 class="cart-name">Carrello</h1>
     <div class="offcanvas-body">
       <div v-if="cart.length > 0">
         <div
@@ -179,7 +179,7 @@ export default {
           <em>Totale:</em><span> € {{ cartTotal }}</span>
         </h3>
         <!--* CART BUTTONS  -->
-        <div class="cart-buttons">
+        <div class="cart-buttons d-flex flex-column">
           <router-link
             @click="paymentSection"
             class="btn checkout d-flex justify-content-center align-items-center"
@@ -197,10 +197,24 @@ export default {
             Svuota carrello
             <font-awesome-icon icon="fa-solid fa-cart-arrow-down" size="lg" />
           </button>
+          <img
+            class="text-center w-25 mx-auto"
+            src="/img/Risorsa-3.png"
+            alt=""
+          />
         </div>
       </div>
-      <div v-else>
-        <h1 class="bg-primary text-center mt-5">Il tuo carrello è vuoto</h1>
+      <div class="d-flex flex-column align-items-center" v-else>
+        <img class="text-center w-25 mx-auto" src="/img/Risorsa-4.png" alt="" />
+        <h1 class="empty-cart text-center mt-3">Il tuo carrello è vuoto</h1>
+        <router-link
+          class="btn btn-homepage mx-2 d-flex justify-content-center align-items-center"
+          aria-current="page"
+          :to="{ name: 'home' }"
+          >Torna alla Home
+          <font-awesome-icon icon="fa-solid fa-house" size="lg"
+        /></router-link>
+        <em class="my-2">e/o clicca fuori da questa schermata!</em>
       </div>
     </div>
   </div>
@@ -252,6 +266,9 @@ export default {
 }
 
 // Offcanvas e contenuti
+.cart-name {
+  color: rgb(48, 169, 129);
+}
 .dish-card {
   width: 100%;
   box-shadow: 0px 0px 3px 0px grey;
@@ -344,6 +361,7 @@ export default {
   }
 }
 
+//Bottoni carrello
 .cart-buttons {
   .btn {
     width: 100% !important;
@@ -369,6 +387,28 @@ export default {
     margin-left: 10px;
   }
   .fa-cart-arrow-down {
+    margin-left: 10px;
+  }
+}
+
+//Carrello vuoto
+.empty-cart {
+  border-radius: 20px;
+  background-color: rgb(234, 94, 61);
+  color: white;
+  padding: 20px;
+}
+.btn-homepage {
+  width: 100%;
+  background-color: rgb(48, 169, 129);
+  color: white;
+  font-weight: bold;
+  &:hover {
+    background-color: rgb(19, 65, 50);
+    cursor: pointer;
+  }
+
+  .fa-house {
     margin-left: 10px;
   }
 }
