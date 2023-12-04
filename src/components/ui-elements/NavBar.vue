@@ -45,8 +45,7 @@ export default {
               class="btn"
               type="button"
               data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasRight"
-              aria-controls="offcanvasRight"
+              data-bs-target="#paymentFormOffcanvas"
             >
               <font-awesome-icon icon="fa-solid fa-cart-shopping" size="xl" />
             </button>
@@ -95,7 +94,6 @@ export default {
 }
 
 .fa-cart-shopping {
-  margin-left: 20px;
   color: white;
 
   &:hover {
