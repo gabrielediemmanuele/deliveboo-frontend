@@ -118,7 +118,9 @@ export default {
       this.cart = [];
       this.saveCats();
       this.showModal = false;
+      this.$emit('cart-cleared');
     },
+
     saveCats() {
       let parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
@@ -218,4 +220,5 @@ export default {
   h5 {
     color: rgb(234, 94, 61);
   }
-}</style>
+}
+</style>
