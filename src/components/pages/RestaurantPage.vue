@@ -380,19 +380,4 @@ export default {
     margin: 0px auto;
   }
 }
-
-.card {
-  width: 40%;
-  margin: 10px 10px;
-  padding: 10px;
-
-  button {
-    width: 30%;
-    margin: 10px 0px;
-  }
-
-  h5 {
-    color: rgb(234, 94, 61);
-  }
-}
 </style>
