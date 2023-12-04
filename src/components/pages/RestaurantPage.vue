@@ -192,7 +192,7 @@ export default {
       <div class="row">
         <div class="card" v-for="dish in dishes" :key="dish.id">
           <h5 class="card-title">{{ dish.name }}</h5>
-          <p class="card-text">{{ dish.price }}</p>
+          <p class="card-text">€{{ dish.price }}</p>
           <button type="button" class="btn btn-success" @click="added(dish)">
             +
           </button>
@@ -208,18 +208,39 @@ export default {
           <!-- Altre informazioni sui piatti... -->
         </div>
         <div v-if="!totalItem == 0">
-          <h3>Cart Total: ${{ totalItem }}</h3>
+          <h3>Cart Total: €{{ totalItem }}</h3>
         </div>
         <h1 class="bg-primary text-center mt-5" v-else>
           Il tuo carrello è vuoto
         </h1>
-        <PaymentForm
-          :cart="cart"
-          :totalItem="totalItem"
-          @remove="removeFromCart"
-          @add="addToCart"
-        ></PaymentForm>
       </div>
+    </div>
+  </div>
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="paymentFormOffcanvas"
+    aria-labelledby="paymentFormOffcanvasLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="paymentFormOffcanvasLabel">
+        Payment Form
+      </h5>
+      <button
+        type="button"
+        class="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- Includi il componente PaymentForm -->
+      <PaymentForm
+        :cart="cart"
+        :totalItem="totalItem"
+        @remove="removeFromCart"
+        @add="addToCart"
+      ></PaymentForm>
     </div>
   </div>
   <!--* Modale -->
