@@ -177,30 +177,29 @@ export default {
     <!--* Layout delle card dei PIATTI -->
     <div class="container">
       <div class="row">
-        <div
-          class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12 d-flex justify-content-center mt-4 mb-2"
-          v-for="dish in dishes"
-          :key="dish.id + cartKey"
-        >
-          <div class="dish-card">
-            <img :src="dish.image" class="dish-image mb-2" alt="" />
-            <h5 class="card-title">{{ dish.name }}</h5>
-            <div class="description-cont my-2">
-              <p class="card-text">{{ dish.description }}</p>
-            </div>
-            <div class="btn-container d-flex justify-content-between">
-              <span
-                class="btn btn-success d-flex justify-content-center align-items-center ms-add-btn"
-                @click="added(dish)"
-                >+ Aggiungi</span
-              >
-              <span class="btn-price d-flex align-items-center"
-                >€ {{ dish.price }}</span
-              >
-            </div>
-          </div>
+        <div class="card" v-for="dish in dishes" :key="dish.id">
+          <h5 class="card-title">{{ dish.name }}</h5>
+          <p class="card-text">{{ dish.price }}</p>
+          <button type="button" class="btn btn-success" @click="added(dish)">
+            +
+          </button>
+
+          <button
+            class="btn btn-warning"
+            type="button"
+            @click="remove(dish.id)"
+          >
+            -
+          </button>
+          <h3 class="mt-2" v-text="getQty(dish.id)"></h3>
+          <!-- Altre informazioni sui piatti... -->
         </div>
-        <!--! Nuova card v2 -->
+        <div v-if="!totalItem == 0">
+          <h3>Cart Total: ${{ totalItem }}</h3>
+        </div>
+        <h1 class="bg-primary text-center mt-5" v-else>
+          Il tuo carrello è vuoto
+        </h1>
       </div>
     </div>
   </div>
