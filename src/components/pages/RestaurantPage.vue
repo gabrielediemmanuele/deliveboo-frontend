@@ -125,7 +125,7 @@ export default {
       this.cart = [];
       this.saveCats();
       this.showModal = false;
-      this.$emit('cart-cleared');
+      this.$emit("cart-cleared");
     },
 
     saveCats() {
@@ -395,5 +395,4 @@ export default {
     color: rgb(234, 94, 61);
   }
 }
-</style>
 </style>
