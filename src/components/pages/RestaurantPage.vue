@@ -176,7 +176,7 @@ export default {
     <div class="container">
       <div class="row">
         <div
-          class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12 d-flex justify-content-center mt-4 mb-2"
+          class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12 d-flex justify-content-center mt-4 mb-2"
           v-for="dish in dishes"
           :key="dish.id + cartKey"
         >
@@ -282,7 +282,7 @@ export default {
 
 //STYLE DELLE DISH CARD
 .dish-card {
-  width: 180px;
+  width: 250px;
   border-radius: 20px;
   box-shadow: 0px 0px 4px 0px gray;
   padding: 10px;
@@ -302,7 +302,7 @@ export default {
     font-weight: bold;
   }
   .description-cont {
-    height: 50px;
+    height: 70px;
     border-radius: 5px;
     overflow-y: auto;
     box-shadow: 0px 0px 1px 0px rgb(135, 135, 135) inset;
