@@ -153,10 +153,10 @@ export default {
             <div class="cart-info">
               <h6 class="card-title">{{ item.name }}</h6>
               <div class="cad-cont d-flex">
-                <div class="dish-price p-1">
+                <div class="dish-price p-2">
                   <strong>€</strong> {{ item.price }}
                 </div>
-                <div class="dish-quantity p-1">
+                <div class="dish-quantity p-2">
                   <strong>Quantity: </strong>
                   <span>{{ getQty(item.id) }} </span> /pz
                 </div>
@@ -175,24 +175,27 @@ export default {
           </div>
         </div>
         <!--* Totale + bottoni -->
-        <h3>
-          Totale: € <span>{{ cartTotal }}</span>
+        <h3 class="total">
+          <em>Totale:</em><span> € {{ cartTotal }}</span>
         </h3>
         <!--* CART BUTTONS  -->
         <div class="cart-buttons">
           <router-link
             @click="paymentSection"
-            class="btn btn-warning d-flex justify-content-center align-items-center"
+            class="btn checkout d-flex justify-content-center align-items-center"
             :to="{ name: 'payment' }"
             aria-current="page"
             >Vai al checkout
+            <font-awesome-icon icon="fa-solid fa-coins" size="lg" />
           </router-link>
+          <div class="text-center"><em>oppure</em></div>
           <button
-            class="btn btn-danger trash d-flex justify-content-center align-items-center"
+            class="btn trash d-flex justify-content-center align-items-center"
             type="button"
             @click="clearCart()"
           >
             Svuota carrello
+            <font-awesome-icon icon="fa-solid fa-cart-arrow-down" size="lg" />
           </button>
         </div>
       </div>
@@ -309,23 +312,64 @@ export default {
       padding: 0px !important;
     }
     .btn.add {
-      background-color: white;
-      color: rgb(48, 169, 129);
-      border: 1px solid rgb(48, 169, 129);
-      &:hover {
-        background-color: rgb(48, 169, 129);
-        color: white;
+      background-color: rgb(48, 169, 129);
+      color: white;
+      &:active {
+        background-color: white;
+        color: rgb(48, 169, 129);
+        border: 1px solid rgb(48, 169, 129);
       }
     }
     .btn.remove {
-      background-color: white;
-      color: rgb(234, 94, 61);
-      border: 1px solid rgb(234, 94, 61);
-      &:hover {
+      background-color: rgb(234, 94, 61);
+      color: white;
+
+      &:active {
         background-color: rgb(234, 94, 61);
         color: white;
+
+        background-color: white;
+        color: rgb(234, 94, 61);
+        border: 1px solid rgb(234, 94, 61);
       }
     }
+  }
+}
+
+// Total
+.total {
+  color: black;
+  span {
+    color: rgb(234, 94, 61);
+  }
+}
+
+.cart-buttons {
+  .btn {
+    width: 100% !important;
+    margin: 15px 0px;
+  }
+  .btn.checkout {
+    background-color: rgb(48, 169, 129);
+    color: white;
+    font-weight: bold;
+    &:hover {
+      background-color: rgb(19, 65, 50) !important;
+    }
+  }
+  .btn.trash {
+    background-color: rgb(234, 105, 105);
+    color: white;
+    font-weight: bold;
+    &:hover {
+      background-color: rgb(184, 77, 77);
+    }
+  }
+  .fa-coins {
+    margin-left: 10px;
+  }
+  .fa-cart-arrow-down {
+    margin-left: 10px;
   }
 }
 </style>
