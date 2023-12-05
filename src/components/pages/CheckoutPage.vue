@@ -1,21 +1,90 @@
 <script>
-// import MyComponent from "./components/MyComponent. vue!";
+import axios from "axios";
 
 export default {
   data() {
-   return {
-     title: "Hello world"
-   }
- }
+    return {
+      title: "Pagina Pagamento",
 
- // components: {
- //   MyComponent,
- // },
+    //   oggetto che si riempie all'inserimento dei dati
+      formData: {
+        guest_name: "",
+        guest_surname: "",
+        guest_address: "",
+        guest_phone: "",
+        guest_mail:'',
+        total: 0,
+      },
+    };
+  },
+
+  methods: {
+    submitForm() {
+        // chiamata axios che manda i dati al back-end
+      axios
+        .post("http://localhost:8000/api/orders", this.formData)
+        .then((response) => {
+          console.log("Dati inviati con successo:", response.data);
+        })
+    },
+  },
 };
 </script>
 
 <template>
-   <h1>{{ title }}</h1>
+  <div class="container">
+    <h1>{{ title }}</h1>
+
+    <form @submit.prevent="submitForm">
+      <label for="name" class="form-label">Nome</label>
+      <input
+        v-model="formData.guest_name"
+        type="text"
+        name="name"
+        id="name"
+        class="form-control"
+      />
+
+      <label for="surname" class="form-label">Cognome</label>
+      <input
+        v-model="formData.guest_surname"
+        type="text"
+        name="surname"
+        id="surname"
+        class="form-control"
+      />
+
+      <label for="address" class="form-label">Indirizzo</label>
+      <input
+        v-model="formData.guest_address"
+        type="text"
+        name="address"
+        id="address"
+        class="form-control"
+      />
+      
+      <label for="phone" class="form-label">Numero</label>
+      <input
+        v-model="formData.guest_phone"
+        type="text"
+        name="phone"
+        id="phone"
+        class="form-control"
+      />
+
+      <label for="email" class="form-label">Email</label>
+      <input
+        v-model="formData.guest_mail"
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+      />
+
+
+      <button type="submit" class="btn btn-primary mt-4">Invia dati</button>
+    </form>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>
