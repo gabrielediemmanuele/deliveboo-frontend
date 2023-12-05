@@ -182,6 +182,30 @@ export default {
         alt=""
         class="profile-image"
       />
+      <img
+        v-else-if="restaurantInfo.id === 2"
+        src="/img/krustylogo.png"
+        alt=""
+        class="profile-image"
+      />
+      <img
+        v-else-if="restaurantInfo.id === 3"
+        src="/img/Upizzaiuole.png"
+        alt=""
+        class="profile-image"
+      />
+      <img
+        v-else-if="restaurantInfo.id === 4"
+        src="/img/paiolomagico.jpg"
+        alt=""
+        class="profile-image"
+      />
+      <img
+        v-else
+        src="/img/Restaurant-Logo-Design-2-1536x864.jpg"
+        alt=""
+        class="profile-image"
+      />
     </div>
     <!--* Container Testi Pagina Ristorante -->
     <div class="container text">
@@ -191,22 +215,25 @@ export default {
     </div>
     <!--* Layout delle card dei PIATTI -->
     <div class="container">
-      <div class="row">
-        <div class="card" v-for="dish in dishes" :key="dish.id">
+      <div class="row justify-content-evenly">
+        <div class="dish-card mt-3" v-for="dish in dishes" :key="dish.id">
+          <img :src="dish.image" class="dish-image mb-1" alt="" />
           <h5 class="card-title">{{ dish.name }}</h5>
-          <p class="card-text">€{{ dish.price }}</p>
-          <button type="button" class="btn btn-success" @click="added(dish)">
-            +
-          </button>
-
-          <button
-            class="btn btn-warning"
-            type="button"
-            @click="remove(dish.id)"
+          <p class="card-price">€{{ dish.price }}</p>
+          <div class="description-cont my-1">
+            <p class="card-text">{{ dish.description }}</p>
+          </div>
+          <div
+            class="btn-container d-flex justify-content-between align-items-center"
           >
-            -
-          </button>
-          <h3 class="mt-2" v-text="getQty(dish.id)"></h3>
+            <button type="button" class="btn-add" @click="added(dish)">
+              Aggiungi
+            </button>
+            <h3 class="" v-text="getQty(dish.id)"></h3>
+            <button class="btn-remove" type="button" @click="remove(dish.id)">
+              Rimuovi
+            </button>
+          </div>
           <!-- Altre informazioni sui piatti... -->
         </div>
         <!-- <div v-if="!totalItem == 0">
@@ -226,9 +253,9 @@ export default {
     aria-labelledby="paymentFormOffcanvasLabel"
   >
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="paymentFormOffcanvasLabel">
-        Payment Form
-      </h5>
+      <h2 class="offcanvas-title mx-auto" id="paymentFormOffcanvasLabel">
+        Il tuo Carrello
+      </h2>
       <button
         type="button"
         class="btn-close text-reset"
@@ -259,9 +286,9 @@ export default {
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="restaurantMismatchModalLabel">
+          <h3 class="modal-title" id="restaurantMismatchModalLabel">
             Attenzione!
-          </h5>
+          </h3>
           <button
             type="button"
             class="close"
@@ -351,6 +378,10 @@ export default {
   }
 }
 
+.offcanvas-title {
+  color: rgb(234, 94, 61);
+}
+
 //Container Testi
 .container.text {
   text-align: center !important;
@@ -369,7 +400,7 @@ export default {
 
 //STYLE DELLE DISH CARD
 .dish-card {
-  width: 250px;
+  width: 200px;
   border-radius: 20px;
   box-shadow: 0px 0px 4px 0px gray;
   padding: 10px;
@@ -388,6 +419,10 @@ export default {
     color: rgb(234, 94, 61);
     font-weight: bold;
   }
+  .card-price {
+    margin: 0 !important;
+    font-weight: bold;
+  }
   .description-cont {
     height: 70px;
     border-radius: 5px;
@@ -401,14 +436,15 @@ export default {
 //Button Container
 .btn-container {
   margin-top: 10px;
-  .btn {
-    border-radius: 60px !important;
+  .btn-add {
+    border-radius: 20px !important;
     padding: 4px 8px !important;
     font-size: 12px;
     position: relative;
     background-color: #04aa6d;
     border: none;
     color: #ffffff;
+    font-weight: bold;
     user-select: none;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -443,41 +479,15 @@ export default {
       top: 1px;
     }
   }
-  .btn-price {
-    border-radius: 60px !important;
-    box-shadow: 0px 0px 1px 0px rgb(135, 135, 135);
-    padding: 4px 8px !important;
-    background-color: white;
-    font-size: 12px;
-    font-weight: bold;
-    &:hover {
-      background-color: rgb(234, 94, 61);
-      color: white;
-    }
-  }
-}
-.row {
-  h1 {
+  .btn-remove {
     border-radius: 20px;
+    box-shadow: 0px 0px 1px 0px rgb(135, 135, 135);
+    padding: 4px 8px;
     background-color: rgb(234, 94, 61);
     color: white;
-    width: 80%;
-    margin: 0px auto;
-  }
-}
-
-.card {
-  width: 40%;
-  margin: 10px 10px;
-  padding: 10px;
-
-  button {
-    width: 30%;
-    margin: 10px 0px;
-  }
-
-  h5 {
-    color: rgb(234, 94, 61);
+    font-size: 12px;
+    font-weight: bold;
+    border-style: none;
   }
 }
 </style>
