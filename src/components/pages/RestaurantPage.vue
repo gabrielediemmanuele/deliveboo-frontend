@@ -212,16 +212,14 @@ export default {
           <div class="description-cont my-1">
             <p class="card-text">{{ dish.description }}</p>
           </div>
-          <div class="btn-container d-flex justify-content-between">
-            <button type="button" class="btn btn-success" @click="added(dish)">
+          <div
+            class="btn-container d-flex justify-content-between align-items-center"
+          >
+            <button type="button" class="btn-add" @click="added(dish)">
               Aggiungi
             </button>
-            <h3 class="mt-2" v-text="getQty(dish.id)"></h3>
-            <button
-              class="btn btn-remove"
-              type="button"
-              @click="remove(dish.id)"
-            >
+            <h3 class="" v-text="getQty(dish.id)"></h3>
+            <button class="btn-remove" type="button" @click="remove(dish.id)">
               Rimuovi
             </button>
           </div>
@@ -423,14 +421,15 @@ export default {
 //Button Container
 .btn-container {
   margin-top: 10px;
-  .btn {
-    border-radius: 60px !important;
+  .btn-add {
+    border-radius: 20px !important;
     padding: 4px 8px !important;
     font-size: 12px;
     position: relative;
     background-color: #04aa6d;
     border: none;
     color: #ffffff;
+    font-weight: bold;
     user-select: none;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -466,13 +465,14 @@ export default {
     }
   }
   .btn-remove {
-    border-radius: 60px !important;
+    border-radius: 20px;
     box-shadow: 0px 0px 1px 0px rgb(135, 135, 135);
-    padding: 4px 8px !important;
+    padding: 4px 8px;
     background-color: rgb(234, 94, 61);
     color: white;
     font-size: 12px;
     font-weight: bold;
+    border-style: none;
   }
 }
 </style>
