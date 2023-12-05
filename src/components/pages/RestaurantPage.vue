@@ -253,9 +253,9 @@ export default {
     aria-labelledby="paymentFormOffcanvasLabel"
   >
     <div class="offcanvas-header">
-      <h3 class="offcanvas-title mx-auto" id="paymentFormOffcanvasLabel">
-        Carrello
-      </h3>
+      <h2 class="offcanvas-title mx-auto" id="paymentFormOffcanvasLabel">
+        Il tuo Carrello
+      </h2>
       <button
         type="button"
         class="btn-close text-reset"
@@ -376,6 +376,10 @@ export default {
     bottom: -70px;
     border-radius: 50%;
   }
+}
+
+.offcanvas-title {
+  color: rgb(234, 94, 61);
 }
 
 //Container Testi
