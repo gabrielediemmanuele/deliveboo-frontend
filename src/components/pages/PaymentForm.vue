@@ -33,7 +33,7 @@ export default {
               <strong>€</strong> {{ item.price }}
             </div>
             <div class="dish-quantity p-2">
-              <strong>Quantity: </strong>
+              <strong>Quantità: </strong>
               <span>{{ item.qty }}</span>
             </div>
           </div>
