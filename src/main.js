@@ -15,7 +15,11 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faCartShopping);
+import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
+
+import { faCoins } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faCartShopping, faCartArrowDown, faCoins);
 
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);

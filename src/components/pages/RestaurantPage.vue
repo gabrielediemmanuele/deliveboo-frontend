@@ -242,9 +242,9 @@ export default {
     aria-labelledby="paymentFormOffcanvasLabel"
   >
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="paymentFormOffcanvasLabel">
-        Payment Form
-      </h5>
+      <h3 class="offcanvas-title mx-auto" id="paymentFormOffcanvasLabel">
+        Carrello
+      </h3>
       <button
         type="button"
         class="btn-close text-reset"
@@ -275,9 +275,9 @@ export default {
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="restaurantMismatchModalLabel">
+          <h3 class="modal-title" id="restaurantMismatchModalLabel">
             Attenzione!
-          </h5>
+          </h3>
           <button
             type="button"
             class="close"
