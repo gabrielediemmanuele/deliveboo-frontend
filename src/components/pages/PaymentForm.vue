@@ -12,6 +12,9 @@ export default {
     addToCart(item) {
       this.$emit("add", item);
     },
+    clearCart(cart) {
+      this.$emit("clearCart", cart);
+    },
   },
 };
 </script>
@@ -23,6 +26,7 @@ export default {
       {{ item.name }} - {{ item.price }} - Qty: {{ item.qty }}
       <button @click="removeFromCart(item.id)">Remove</button>
       <button @click="addToCart(item)">Aggiungi</button>
+      <button @click="clearCart(cart)">Svuota Carrello</button>
     </div>
 
     <!-- Totale carrello -->
