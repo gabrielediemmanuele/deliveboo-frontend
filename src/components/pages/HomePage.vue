@@ -1,6 +1,7 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
 import axios from "axios";
+import NavBar from '../ui-elements/NavBar.vue';
 
 import RestaurantCard from "../restaurants/RestaurantCard.vue";
 
@@ -18,6 +19,7 @@ export default {
 
   components: {
     RestaurantCard,
+    NavBar,
   },
 
   methods: {
@@ -97,6 +99,13 @@ export default {
   </div>
 
   <!--! Container FILTRI e RISTORANTI -->
+  <div>
+    <!-- Utilizzo del componente NavBar nella homepage, dove isHomePage è true -->
+    <NavBar :isHomePage="true" />
+
+    <!-- Resto del contenuto della tua homepage -->
+  </div>
+
   <div class="container">
     <div class="our-resturants text-center mt-5 mb-2">
       <h1>I NOSTRI RISTORATORI</h1>
