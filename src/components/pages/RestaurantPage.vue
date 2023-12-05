@@ -21,6 +21,7 @@ export default {
         image: "",
       },
       showModal: false,
+      showModalemptyCart: false,
     };
   },
   components: { PaymentForm },
@@ -138,14 +139,15 @@ export default {
       this.cart = [];
       this.saveCart();
       this.showModal = false;
-      this.$emit("cart-cleared");
+      this.showModalemptyCart = false;
+      // this.$emit("cart-cleared");
     },
 
     saveCart() {
       let parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
       this.viewCart();
-      window.dispatchEvent(new Event("cart-updated"));
+      // window.dispatchEvent(new Event("cart-updated"));
     },
     remove(id) {
       let item = findById(this.cart, id);
@@ -207,15 +209,16 @@ export default {
           <h3 class="mt-2" v-text="getQty(dish.id)"></h3>
           <!-- Altre informazioni sui piatti... -->
         </div>
-        <div v-if="!totalItem == 0">
+        <!-- <div v-if="!totalItem == 0">
           <h3>Cart Total: €{{ totalItem }}</h3>
         </div>
         <h1 class="bg-primary text-center mt-5" v-else>
           Il tuo carrello è vuoto
-        </h1>
+        </h1> -->
       </div>
     </div>
   </div>
+  <!-- OFFCANVAS -->
   <div
     class="offcanvas offcanvas-end"
     tabindex="-1"
@@ -240,6 +243,7 @@ export default {
         :totalItem="totalItem"
         @remove="removeFromCart"
         @add="addToCart"
+        @clearCart="clearCart, (this.showModalemptyCart = true)"
       ></PaymentForm>
     </div>
   </div>
@@ -250,7 +254,6 @@ export default {
     tabindex="-1"
     role="dialog"
     aria-labelledby="restaurantMismatchModalLabel"
-    aria-hidden="true"
     :class="{ show: showModal, 'd-block': showModal }"
   >
     <div class="modal-dialog" role="document">
@@ -262,7 +265,7 @@ export default {
           <button
             type="button"
             class="close"
-            data-dismiss="modal"
+            @click="showModal = false"
             aria-label="Close"
           >
             <span aria-hidden="true">&times;</span>
@@ -275,7 +278,50 @@ export default {
           <button type="button" class="btn btn-danger" @click="clearCart">
             Svuota Carrello
           </button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="showModal = false"
+          >
+            Annulla
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="restaurantMismatchModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="restaurantMismatchModalLabel"
+    :class="{ show: showModalemptyCart, 'd-block': showModalemptyCart }"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="restaurantMismatchModalLabel">
+            Attenzione!
+          </h5>
+          <button
+            type="button"
+            class="close"
+            @click="showModalemptyCart = false"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Sei sicuro di voler svuotare il carrello?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" @click="clearCart">
+            Si sono sicuro
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="showModalemptyCart = false"
+          >
             Annulla
           </button>
         </div>
