@@ -240,6 +240,7 @@ export default {
         :totalItem="totalItem"
         @remove="removeFromCart"
         @add="addToCart"
+        @clearCart="clearCart"
       ></PaymentForm>
     </div>
   </div>
