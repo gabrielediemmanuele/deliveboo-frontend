@@ -182,6 +182,19 @@ export default {
         alt=""
         class="profile-image"
       />
+      <img
+        v-else-if="restaurantInfo.id === 2"
+        src="/img/krustylogo.png"
+        alt=""
+        class="profile-image"
+      />
+      <img
+        v-else-if="restaurantInfo.id === 3"
+        src="/img/Upizzaiuole.png"
+        alt=""
+        class="profile-image"
+      />
+      <img v-else src="/img/paiolomagico.jpg" alt="" class="profile-image" />
     </div>
     <!--* Container Testi Pagina Ristorante -->
     <div class="container text">
@@ -191,22 +204,27 @@ export default {
     </div>
     <!--* Layout delle card dei PIATTI -->
     <div class="container">
-      <div class="row">
-        <div class="card" v-for="dish in dishes" :key="dish.id">
+      <div class="row justify-content-evenly">
+        <div class="dish-card mt-3" v-for="dish in dishes" :key="dish.id">
+          <img :src="dish.image" class="dish-image mb-1" alt="" />
           <h5 class="card-title">{{ dish.name }}</h5>
-          <p class="card-text">€{{ dish.price }}</p>
-          <button type="button" class="btn btn-success" @click="added(dish)">
-            +
-          </button>
-
-          <button
-            class="btn btn-warning"
-            type="button"
-            @click="remove(dish.id)"
-          >
-            -
-          </button>
-          <h3 class="mt-2" v-text="getQty(dish.id)"></h3>
+          <p class="card-price">€{{ dish.price }}</p>
+          <div class="description-cont my-1">
+            <p class="card-text">{{ dish.description }}</p>
+          </div>
+          <div class="btn-container d-flex justify-content-between">
+            <button type="button" class="btn btn-success" @click="added(dish)">
+              Aggiungi
+            </button>
+            <h3 class="mt-2" v-text="getQty(dish.id)"></h3>
+            <button
+              class="btn btn-remove"
+              type="button"
+              @click="remove(dish.id)"
+            >
+              Rimuovi
+            </button>
+          </div>
           <!-- Altre informazioni sui piatti... -->
         </div>
         <!-- <div v-if="!totalItem == 0">
@@ -369,7 +387,7 @@ export default {
 
 //STYLE DELLE DISH CARD
 .dish-card {
-  width: 250px;
+  width: 200px;
   border-radius: 20px;
   box-shadow: 0px 0px 4px 0px gray;
   padding: 10px;
@@ -386,6 +404,10 @@ export default {
 
   h5 {
     color: rgb(234, 94, 61);
+    font-weight: bold;
+  }
+  .card-price {
+    margin: 0 !important;
     font-weight: bold;
   }
   .description-cont {
@@ -443,17 +465,14 @@ export default {
       top: 1px;
     }
   }
-  .btn-price {
+  .btn-remove {
     border-radius: 60px !important;
     box-shadow: 0px 0px 1px 0px rgb(135, 135, 135);
     padding: 4px 8px !important;
-    background-color: white;
+    background-color: rgb(234, 94, 61);
+    color: white;
     font-size: 12px;
     font-weight: bold;
-    &:hover {
-      background-color: rgb(234, 94, 61);
-      color: white;
-    }
   }
 }
 .row {
