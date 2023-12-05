@@ -57,7 +57,7 @@ export default {
           let index = this.cart.indexOf(item);
           this.cart.splice(index, 1);
         }
-        this.saveCats();
+        this.saveCart();
       }
     },
     fetchRestaurant() {
@@ -121,7 +121,7 @@ export default {
       let itemm = findById(this.cart, item.id);
       if (itemm !== undefined) {
         itemm.qty += 1;
-        this.saveCats();
+        this.saveCart();
       } else {
         this.cartadd.id = item.id;
         this.cartadd.restaurantId = item.restaurant_id;
@@ -131,17 +131,17 @@ export default {
         this.cartadd.qty = 1;
         this.cart.push(this.cartadd);
         this.cartadd = {};
-        this.saveCats();
+        this.saveCart();
       }
     },
     clearCart() {
       this.cart = [];
-      this.saveCats();
+      this.saveCart();
       this.showModal = false;
       this.$emit("cart-cleared");
     },
 
-    saveCats() {
+    saveCart() {
       let parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
       this.viewCart();
@@ -155,7 +155,7 @@ export default {
           let index = this.cart.indexOf(item);
           this.cart.splice(index, 1);
         }
-        this.saveCats();
+        this.saveCart();
       }
     },
   },
