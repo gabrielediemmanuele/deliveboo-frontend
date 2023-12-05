@@ -194,7 +194,18 @@ export default {
         alt=""
         class="profile-image"
       />
-      <img v-else src="/img/paiolomagico.jpg" alt="" class="profile-image" />
+      <img
+        v-else-if="restaurantInfo.id === 4"
+        src="/img/paiolomagico.jpg"
+        alt=""
+        class="profile-image"
+      />
+      <img
+        v-else
+        src="/img/Restaurant-Logo-Design-2-1536x864.jpg"
+        alt=""
+        class="profile-image"
+      />
     </div>
     <!--* Container Testi Pagina Ristorante -->
     <div class="container text">
