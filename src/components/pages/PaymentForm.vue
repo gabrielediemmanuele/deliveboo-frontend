@@ -62,9 +62,8 @@ export default {
     <!--* CART BUTTONS  -->
     <div class="cart-buttons d-flex flex-column">
       <router-link
-        @click="paymentSection"
         class="btn checkout d-flex justify-content-center align-items-center"
-        :to="{ name: 'payment' }"
+        :to="{ name: 'checkout' }"
         aria-current="page"
         >Vai al checkout
         <font-awesome-icon icon="fa-solid fa-coins" size="lg" />
