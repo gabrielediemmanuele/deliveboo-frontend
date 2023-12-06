@@ -16,7 +16,7 @@ export default {
         guest_address: "",
         guest_phone: "",
         guest_mail: "",
-        total: 0,
+        totalItem: this.$route.query.totalItem,
       },
     };
   },
@@ -29,18 +29,24 @@ export default {
   },
   methods: {
     submitForm() {
-      // chiamata axios che manda i dati al back-end
+      // chiamata axios che manda i dati al back-end (Orders)
       axios
         .post("http://localhost:8000/api/orders", this.formData)
         .then((response) => {
           console.log("Dati inviati con successo:", response.data);
         });
 
-      axios
-        .post("http://localhost:8000/api/api/payment", this.formData)
-        .then((response) => {
-          console.log("Dati inviati con successo:", response.data);
-        });
+
+        // chiamata axios che manda i dati al back-end (Braintree)
+        
+      // axios
+      //   .post("http://localhost:8000/api/payment", this.formData)
+      //   .then((response) => {
+      //     console.log("Dati inviati con successo:", response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error("Errore durante la richiesta:", error.response.data);
+      //   });
     },
   },
 };
