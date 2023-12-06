@@ -1,7 +1,7 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
 import axios from "axios";
-import NavBar from '../ui-elements/NavBar.vue';
+import NavBar from "../ui-elements/NavBar.vue";
 
 import RestaurantCard from "../restaurants/RestaurantCard.vue";
 
@@ -43,7 +43,8 @@ export default {
               )
             );
             // Se non ci sono ristoranti con queste categorie
-            this.showNoRestaurantsMessage = this.filteredRestaurants.length === 0;
+            this.showNoRestaurantsMessage =
+              this.filteredRestaurants.length === 0;
           })
           .catch((error) => {
             console.error("Error fetching restaurants by types:", error);
@@ -86,7 +87,11 @@ export default {
     <div class="row mx-auto justify-content-around align-items-center">
       <div class="col-lg-5 col-md-6 col-sm-6">
         <div class="cont-rider-img d-flex justify-content-center">
-          <img class="rider-scooter d-flex justify-content-center" src="/img/Risorsa-5.png" alt="" />
+          <img
+            class="rider-scooter d-flex justify-content-center"
+            src="/img/Risorsa-5.png"
+            alt=""
+          />
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
@@ -113,21 +118,53 @@ export default {
     <!--* Container delle label per i filtri. Nota: le condizioni gestiscono le immagini differenti -->
     <div class="container textured mt-2">
       <div v-if="showNoRestaurantsMessage" class="no-restaurants-message">
-        <p>{{ showNoRestaurantsMessage ? 'Ci dispiace!Non ci sono ristoranti con questa tipologia!' : '' }}</p>
+        <p>
+          {{
+            showNoRestaurantsMessage
+              ? "Ci dispiace!Non ci sono ristoranti con questa tipologia!"
+              : ""
+          }}
+        </p>
       </div>
 
       <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-flex justify-content-around" v-for="(type, index) in types">
-          <div class="label-cont mt-4 mb-4 d-flex flex-column align-items-center" @click="toggleType(type)">
+        <div
+          class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-flex justify-content-around"
+          v-for="(type, index) in types"
+        >
+          <div
+            class="label-cont mt-4 mb-4 d-flex flex-column align-items-center"
+            @click="toggleType(type)"
+          >
             <!--* Immagini -->
             <div class="filter-img-cont" :class="{ active: !type.active }">
-              <img v-if="type.id === 1" src="/img/antique-pizzeria.jpg" alt="" />
-              <img v-else-if="type.id === 2" src="/img/Croissant-dolci-francesi-e1619542389827.jpg" alt="" />
-              <img v-else-if="type.id === 3" src="/img/Traditional-British-food.jpg" alt="" />
-              <img v-else src="/img/brown-bird-perching-during-daytime-wren-wren-wallpaper-preview.jpg" alt="" />
+              <img
+                v-if="type.id === 1"
+                src="/img/antique-pizzeria.jpg"
+                alt=""
+              />
+              <img
+                v-else-if="type.id === 2"
+                src="/img/Croissant-dolci-francesi-e1619542389827.jpg"
+                alt=""
+              />
+              <img
+                v-else-if="type.id === 3"
+                src="/img/Traditional-British-food.jpg"
+                alt=""
+              />
+              <img
+                v-else
+                src="/img/brown-bird-perching-during-daytime-wren-wren-wallpaper-preview.jpg"
+                alt=""
+              />
             </div>
             <!--* Labels -->
-            <span :key="type.id" :class="type.active ? 'label-' + type.label : 'disabled'" class="type-label my-2">
+            <span
+              :key="type.id"
+              :class="type.active ? 'label-' + type.label : 'disabled'"
+              class="type-label my-2"
+            >
               {{ type.label }}
             </span>
           </div>
@@ -136,8 +173,13 @@ export default {
 
       <!--*  Qui trovi le card dei ristoranti, stampate tramite componente! -->
       <div class="row">
-        <RestaurantCard v-for="restaurant in filteredRestaurants" :key="restaurant.id" :restaurant="restaurant"
-          :restaurantId="restaurant.id" :detailView="false">
+        <RestaurantCard
+          v-for="restaurant in filteredRestaurants"
+          :key="restaurant.id"
+          :restaurant="restaurant"
+          :restaurantId="restaurant.id"
+          :detailView="false"
+        >
         </RestaurantCard>
       </div>
     </div>

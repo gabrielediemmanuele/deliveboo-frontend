@@ -316,6 +316,7 @@ export default {
       </div>
     </div>
   </div>
+  <!-- *OFFCANVAS -->
   <div
     class="modal fade"
     id="restaurantMismatchModal"
