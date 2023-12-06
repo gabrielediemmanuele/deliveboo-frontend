@@ -17,6 +17,7 @@ export default {
         guest_phone: "",
         guest_mail: "",
         totalItem: this.$route.query.totalItem,
+        cart: this.cart,
       },
     };
   },
@@ -24,11 +25,15 @@ export default {
     this.cart = JSON.parse(this.$route.query.cart);
     this.totalItem = this.$route.query.totalItem;
   },
+
   components: {
     NavBar,
   },
+
   methods: {
     submitForm() {
+      // Aggiungi l'array cart al formData
+      this.formData.cart = this.cart;
       // chiamata axios che manda i dati al back-end (Orders)
       axios
         .post("http://localhost:8000/api/orders", this.formData)
@@ -37,8 +42,9 @@ export default {
         });
 
 
-        // chiamata axios che manda i dati al back-end (Braintree)
-        
+
+      // chiamata axios che manda i dati al back-end (Braintree)
+
       // axios
       //   .post("http://localhost:8000/api/payment", this.formData)
       //   .then((response) => {
