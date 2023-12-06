@@ -63,7 +63,10 @@ export default {
     <div class="cart-buttons d-flex flex-column">
       <router-link
         class="btn checkout d-flex justify-content-center align-items-center"
-        :to="{ name: 'checkout' }"
+        :to="{
+          name: 'checkout',
+          query: { cart: JSON.stringify(cart), totalItem: totalItem },
+        }"
         aria-current="page"
         >Vai al checkout
         <font-awesome-icon icon="fa-solid fa-coins" size="lg" />
