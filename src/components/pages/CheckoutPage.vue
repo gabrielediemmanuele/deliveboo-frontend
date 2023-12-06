@@ -32,6 +32,12 @@ export default {
         .then((response) => {
           console.log("Dati inviati con successo:", response.data);
         });
+
+      axios
+        .post("http://localhost:8000/api/api/payment", this.formData)
+        .then((response) => {
+          console.log("Dati inviati con successo:", response.data);
+        });
     },
   },
 };
@@ -86,6 +92,8 @@ export default {
         id="email"
         class="form-control"
       />
+
+      <h3>Totale da pagare: € {{ this.totalItem }}</h3>
 
       <button type="submit" class="btn btn-primary mt-4">Invia dati</button>
     </form>
