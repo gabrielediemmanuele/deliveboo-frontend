@@ -1,4 +1,5 @@
 <script>
+import NavBar from "../ui-elements/NavBar.vue";
 import axios from "axios";
 
 export default {
@@ -23,7 +24,9 @@ export default {
     this.cart = JSON.parse(this.$route.query.cart);
     this.totalItem = this.$route.query.totalItem;
   },
-
+  components: {
+    NavBar,
+  },
   methods: {
     submitForm() {
       // chiamata axios che manda i dati al back-end
@@ -44,6 +47,7 @@ export default {
 </script>
 
 <template>
+  <NavBar :isHomePage="true" />
   <div class="container">
     <h1>{{ title }}</h1>
 
