@@ -5,27 +5,39 @@ export default {
   data() {
     return {
       title: "Pagina Pagamento",
+      cart: [],
+      totalItem: 0,
 
-    //   oggetto che si riempie all'inserimento dei dati
+      //   oggetto che si riempie all'inserimento dei dati
       formData: {
         guest_name: "",
         guest_surname: "",
         guest_address: "",
         guest_phone: "",
-        guest_mail:'',
+        guest_mail: "",
         total: 0,
       },
     };
   },
+  created() {
+    this.cart = JSON.parse(this.$route.query.cart);
+    this.totalItem = this.$route.query.totalItem;
+  },
 
   methods: {
     submitForm() {
-        // chiamata axios che manda i dati al back-end
+      // chiamata axios che manda i dati al back-end
       axios
         .post("http://localhost:8000/api/orders", this.formData)
         .then((response) => {
           console.log("Dati inviati con successo:", response.data);
-        })
+        });
+
+      axios
+        .post("http://localhost:8000/api/api/payment", this.formData)
+        .then((response) => {
+          console.log("Dati inviati con successo:", response.data);
+        });
     },
   },
 };
@@ -62,7 +74,7 @@ export default {
         id="address"
         class="form-control"
       />
-      
+
       <label for="phone" class="form-label">Numero</label>
       <input
         v-model="formData.guest_phone"
@@ -81,6 +93,7 @@ export default {
         class="form-control"
       />
 
+      <h3>Totale da pagare: € {{ this.totalItem }}</h3>
 
       <button type="submit" class="btn btn-primary mt-4">Invia dati</button>
     </form>
