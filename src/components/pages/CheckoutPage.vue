@@ -14,11 +14,17 @@ export default {
       myUrl: 'http://localhost:8000',
       error: {},
       payLoad: false,
-      guestName: '',
-      guestLastname: '',
-      guestAddress: '',
-      guestPhone: '',
-      guestMail: '',
+
+
+      FormData: {
+        guest_name: "",
+        guest_surname: "",
+        guest_address: "",
+        guest_phone: "",
+        guest_mail: "",
+        totalItem: this.$route.query.totalItem,
+        cart: this.cart,
+      }
     };
   },
   created() {
