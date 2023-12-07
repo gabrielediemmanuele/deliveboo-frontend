@@ -1,4 +1,5 @@
 <script>
+import NavBar from "../ui-elements/NavBar.vue";
 import axios from "axios";
 import braintree from 'braintree-web';
 
@@ -24,6 +25,10 @@ export default {
     this.cart = JSON.parse(this.$route.query.cart);
     this.totalItem = this.$route.query.totalItem;
     this.initializeBraintree(); // Chiamo initializeBraintree qui
+  },
+
+  components: {
+    NavBar,
   },
 
   methods: {

@@ -24,7 +24,12 @@ export default {
     class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mt-4 mb-2"
   >
     <div class="restaurant-card d-flex flex-column mt-4">
-      <img :src="restaurant.image" class="restaurant-image" alt="..." />
+      <img
+        v-if="restaurant.image"
+        :src="restaurant.image"
+        class="restaurant-image"
+        alt="..."
+      />
       <div class="restaurant-info mt-2">
         <h5 class="card-title">{{ restaurant.name }}</h5>
         <p class="card-text">{{ restaurant.description }}</p>

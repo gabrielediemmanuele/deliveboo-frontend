@@ -1,1 +1,5 @@
 @import "bootstrap/scss/bootstrap";
+
+.offcanvas-backdrop.show {
+  opacity: 0 !important;
+}

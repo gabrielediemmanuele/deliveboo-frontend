@@ -100,6 +100,7 @@ export default {
 
 <style lang="scss" scoped>
 // Offcanvas e contenuti
+
 .dish-card {
   width: 100%;
   box-shadow: 0px 0px 3px 0px grey;

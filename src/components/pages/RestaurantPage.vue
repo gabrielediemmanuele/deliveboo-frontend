@@ -236,12 +236,6 @@ export default {
           </div>
           <!-- Altre informazioni sui piatti... -->
         </div>
-        <!-- <div v-if="!totalItem == 0">
-          <h3>Cart Total: €{{ totalItem }}</h3>
-        </div>
-        <h1 class="bg-primary text-center mt-5" v-else>
-          Il tuo carrello è vuoto
-        </h1> -->
       </div>
     </div>
   </div>
@@ -316,6 +310,7 @@ export default {
       </div>
     </div>
   </div>
+  <!-- *OFFCANVAS -->
   <div
     class="modal fade"
     id="restaurantMismatchModal"
