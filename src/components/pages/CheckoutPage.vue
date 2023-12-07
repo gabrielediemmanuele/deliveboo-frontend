@@ -17,8 +17,7 @@ export default {
       error: {},
       payLoad: false,
 
-      //   oggetto che si riempie all'inserimento dei dati
-      formData: {
+      FormData: {
         guest_name: "",
         guest_surname: "",
         guest_address: "",
@@ -26,7 +25,7 @@ export default {
         guest_mail: "",
         totalItem: this.$route.query.totalItem,
         cart: this.cart,
-      },
+      }
     };
   },
   created() {
@@ -125,8 +124,57 @@ export default {
         });
       }
     },
-  },
-};
+
+
+    // RICHIESTA AXIOS POST PER INVIARE I DATI AL BACK END
+    payWithCard() {
+      if (
+        this.guestName === '' ||
+        this.guestLastname === '' ||
+        this.guestAddress === '' ||
+        this.guestPhone === '' ||
+        this.guestMail === ''
+      ) {
+        this.error = {
+          guestName: this.guestName === '' ? 'Inserisci il nome' : '',
+          guestLastname: this.guestLastname === '' ? 'Inserisci il cognome' : '',
+          guestAddress: this.guestAddress === '' ? 'Inserisci l\'indirizzo' : '',
+          guestPhone: this.guestPhone === '' ? 'Inserisci il telefono' : '',
+          guestMail: this.guestMail === '' ? 'Inserisci l\'email' : '',
+        };
+        return;
+      }
+      if (this.braintreeHostedFields) {
+        this.payLoad = true;
+        this.error = "";
+
+        console.log('Valore di totalItem:', this.totalItem);
+        this.braintreeHostedFields.tokenize().then(payload => {
+          console.log(payload.nonce);
+          axios.post(`${this.myUrl}/api/payment`, {
+            "totalItem": Number(this.totalItem),
+            "token": 'payload.nonce',
+            "guest_name": this.guestName,
+            "guest_lastname": this.guestLastname,
+            "guest_phone": this.guestPhone,
+            "guest_address": this.guestAddress,
+            "guest_mail": this.guestMail,
+          }).then(resp => {
+            console.log(resp);
+            alert("Payment successful!");
+            console.log(payWithCard)
+          }).catch(err => {
+            console.log(err);
+          }).finally(() => {
+            this.payLoad = false;
+            this.clearCart();
+            this.$router.push('/thankyou');
+          });
+        })
+      }
+    }
+  }
+}
 </script>
 
 <template>
@@ -136,49 +184,19 @@ export default {
 
     <form @submit.prevent="submitForm">
       <label for="name" class="form-label">Nome</label>
-      <input
-        v-model="formData.guest_name"
-        type="text"
-        name="name"
-        id="name"
-        class="form-control"
-      />
+      <input v-model="formData.guest_name" type="text" name="name" id="name" class="form-control" />
 
       <label for="surname" class="form-label">Cognome</label>
-      <input
-        v-model="formData.guest_surname"
-        type="text"
-        name="surname"
-        id="surname"
-        class="form-control"
-      />
+      <input v-model="formData.guest_surname" type="text" name="surname" id="surname" class="form-control" />
 
       <label for="address" class="form-label">Indirizzo</label>
-      <input
-        v-model="formData.guest_address"
-        type="text"
-        name="address"
-        id="address"
-        class="form-control"
-      />
+      <input v-model="formData.guest_address" type="text" name="address" id="address" class="form-control" />
 
       <label for="phone" class="form-label">Numero</label>
-      <input
-        v-model="formData.guest_phone"
-        type="text"
-        name="phone"
-        id="phone"
-        class="form-control"
-      />
+      <input v-model="formData.guest_phone" type="text" name="phone" id="phone" class="form-control" />
 
       <label for="email" class="form-label">Email</label>
-      <input
-        v-model="formData.guest_mail"
-        type="email"
-        name="email"
-        id="email"
-        class="form-control"
-      />
+      <input v-model="formData.guest_mail" type="email" name="email" id="email" class="form-control" />
 
       <!-- Template Carta nuovo  -->
       <div>
@@ -187,33 +205,20 @@ export default {
             Numero di carta di credito <span class="need">*</span>
           </label>
           <div id="creditCardNumber" class="form-control"></div>
-          <span style="color: red" class="error-message" v-if="error.guestName"
-            >Inserire numeri carta</span
-          >
+          <span style="color: red" class="error-message" v-if="error.guestName">Inserire numeri carta</span>
         </div>
         <div class="form-group">
           <div class="riga d-flex">
             <div class="col-6">
               <label class="text">
-                Data di scadenza <span class="need">*</span></label
-              >
+                Data di scadenza <span class="need">*</span></label>
               <div id="expireDate" class="form-control"></div>
-              <span
-                style="color: red"
-                class="error-message"
-                v-if="error.guestName"
-                >Inserire data di scadenza</span
-              >
+              <span style="color: red" class="error-message" v-if="error.guestName">Inserire data di scadenza</span>
             </div>
             <div class="col-6">
               <label class="text"> CVV <span class="need">*</span></label>
               <div id="cvv" class="form-control"></div>
-              <span
-                style="color: red"
-                class="error-message"
-                v-if="error.guestName"
-                >Inserire CVV</span
-              >
+              <span style="color: red" class="error-message" v-if="error.guestName">Inserire CVV</span>
             </div>
           </div>
         </div>
@@ -224,7 +229,7 @@ export default {
           <span class="ps-3">Carrello vuoto, effettua un ordine.</span>
           <span class="fas fa-arrow-right"></span>
         </div>
-        <button  type="submit" v-else class="btn btn-warning mb-3">
+        <button type="submit" v-else class="btn btn-warning mb-3">
           <span class="ps-3">Paga €{{ this.totalItem }}</span>
           <div v-show="payLoad" class="cell"></div>
         </button>
