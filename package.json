@@ -21,7 +21,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@types/braintree-web": "^3.96.9",
+    "@types/braintree-web": "^3.96.10",
     "@vitejs/plugin-vue": "^4.5.0",
     "sass": "^1.69.5",
     "vite": "^5.0.0"
