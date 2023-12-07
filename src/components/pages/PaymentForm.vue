@@ -84,7 +84,7 @@ export default {
     </div>
   </div>
 
-  <!--! SE IL CARRELLO E' QUALCOSA -->
+  <!--! SE IL CARRELLO E' VUOTO-->
   <div class="d-flex flex-column align-items-center" v-else>
     <img class="text-center w-25 mx-auto" src="/img/Risorsa-4.png" alt="" />
     <h1 class="empty-cart text-center mt-3">Il tuo carrello è vuoto</h1>
