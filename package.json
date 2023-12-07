@@ -16,10 +16,12 @@
     "@fortawesome/vue-fontawesome": "^3.0.5",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
+    "braintree-web": "^3.97.4",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@types/braintree-web": "^3.96.9",
     "@vitejs/plugin-vue": "^4.5.0",
     "sass": "^1.69.5",
     "vite": "^5.0.0"
