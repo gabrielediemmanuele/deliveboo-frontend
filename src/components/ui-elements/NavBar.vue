@@ -1,11 +1,29 @@
 <script>
 import PaymentForm from "../pages/PaymentForm.vue";
 export default {
+  data() {
+    return {
+      cart: [], // Inizializza una variabile per contenere il carrello
+    };
+  },
   components: { PaymentForm },
   props: {
     isHomePage: {
       type: Boolean,
       default: false,
+    },
+  },
+  mounted() {
+    this.cart = this.getCartFromLocalStorage();
+
+    window.addEventListener("storage", () => {
+      this.cart = this.getCartFromLocalStorage();
+    });
+  },
+  methods: {
+    getCartFromLocalStorage() {
+      const cartData = localStorage.getItem("cart");
+      return cartData ? JSON.parse(cartData) : [];
     },
   },
 };
@@ -48,20 +66,24 @@ export default {
           </li>
           <li class="nav-item" v-if="!isHomePage">
             <button
-              class="btn"
+              class="btn position-relative"
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#paymentFormOffcanvas"
             >
               <font-awesome-icon icon="fa-solid fa-cart-shopping" size="xl" />
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >{{ cart.length }}</span
+              >
+
+              <span class="visually-hidden"></span>
             </button>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
-  <!-- OFFCANVAS -->
 </template>
 
 <style lang="scss" scoped>
