@@ -31,7 +31,7 @@ export default {
         alt="..."
       />
       <div class="restaurant-info mt-2">
-        <h5 class="card-title">{{ restaurant.name }}</h5>
+        <h6 class="card-title">{{ restaurant.name }}</h6>
         <p class="card-text">{{ restaurant.description }}</p>
       </div>
       <ul class="list-group list-group-flush mt-2">
@@ -64,8 +64,8 @@ export default {
 
 <style lang="scss" scoped>
 .restaurant-card {
-  width: 250px;
-  height: 100%;
+  width: 230px;
+
   border-radius: 20px;
   box-shadow: 0px 0px 4px 0px gray;
   padding: 10px;
@@ -81,12 +81,15 @@ export default {
   }
 
   .restaurant-info {
-    h5 {
+    h6 {
       color: rgb(234, 94, 61);
+    }
+    .card-text {
+      font-size: 13px;
     }
   }
   .list-group {
-    font-size: 16px;
+    font-size: 13px;
     text-align: start;
     .list-group-item {
       margin: 5px 0px !important;
@@ -114,13 +117,12 @@ export default {
 .type-label {
   color: rgb(255, 255, 255);
   background-color: rgb(234, 94, 61);
-  padding: 2px 3px;
+  padding: 2px 10px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   font-size: 12px;
   cursor: pointer;
-  width: 30%;
   margin: 5px 5px;
 }
 </style>

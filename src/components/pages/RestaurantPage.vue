@@ -218,7 +218,7 @@ export default {
       <div class="row justify-content-evenly">
         <div class="dish-card mt-3" v-for="dish in dishes" :key="dish.id">
           <img :src="dish.image" class="dish-image mb-1" alt="" />
-          <h5 class="card-title">{{ dish.name }}</h5>
+          <h6 class="card-title">{{ dish.name }}</h6>
           <p class="card-price">€{{ dish.price }}</p>
           <div class="description-cont my-1">
             <p class="card-text">{{ dish.description }}</p>
@@ -378,9 +378,13 @@ export default {
     border-radius: 50%;
   }
 }
-
+// OFFCANVAS
+.offcanvas {
+  box-shadow: -7px 0px 30px 0px rgba(0, 0, 0, 0.45);
+  background-color: rgb(48, 169, 129);
+}
 .offcanvas-title {
-  color: rgb(234, 94, 61);
+  color: rgb(255, 255, 255);
 }
 
 //Container Testi
@@ -403,11 +407,11 @@ export default {
 .dish-card {
   width: 200px;
   border-radius: 20px;
+  background-color: white !important;
   box-shadow: 0px 0px 4px 0px gray;
   padding: 10px;
   transition: all 0.5s;
   user-select: none;
-  background-color: white;
   &:hover {
     transform: scale(1.05);
   }
@@ -416,10 +420,11 @@ export default {
     border-radius: 20px;
   }
 
-  h5 {
+  h6 {
     color: rgb(234, 94, 61);
     font-weight: bold;
   }
+
   .card-price {
     margin: 0 !important;
     font-weight: bold;
