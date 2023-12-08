@@ -214,7 +214,7 @@ export default {
       <h2 class="my-3">I nostri piatti</h2>
     </div>
     <!--* Layout delle card dei PIATTI -->
-    <div class="container">
+    <div class="container dishes">
       <div class="row justify-content-evenly">
         <div class="dish-card mt-3" v-for="dish in dishes" :key="dish.id">
           <img :src="dish.image" class="dish-image mb-1" alt="" />
@@ -354,6 +354,12 @@ export default {
 
 <style lang="scss" scoped>
 //Container Immagine
+.container.dishes {
+  background-image: url(../../../public/img/pattern.png);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: contain;
+}
 .images-container {
   width: 100%;
   height: 300px;
