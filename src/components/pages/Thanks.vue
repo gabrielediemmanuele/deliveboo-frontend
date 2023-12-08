@@ -55,6 +55,9 @@ export default {
       @media (min-width: 1200px) and (max-width: 1400px) {
         width: 35%;
       }
+      @media (min-width: 1401px) {
+        width: 35%;
+      }
     }
   }
   .message-cont {
@@ -80,6 +83,9 @@ export default {
 
     @media (min-width: 1200px) and (max-width: 1400px) {
       font-size: 30px;
+    }
+    @media (min-width: 1401px) {
+      font-size: 35px;
     }
   }
 }
