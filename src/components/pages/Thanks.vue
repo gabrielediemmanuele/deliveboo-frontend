@@ -1,18 +1,18 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
+import NavBar from "../ui-elements/NavBar.vue";
 
 export default {
   data() {
     return {};
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  components: { NavBar },
 };
 </script>
 
 <template>
+  <NavBar :isHomePage="true" />
   <div class="container-fluid d-flex flex-column align-items-center">
     <div class="image-cont mt-4 d-flex flex-column align-items-center">
       <img src="../../../public/img/Risorsa 7.png" alt="" />
