@@ -359,6 +359,7 @@ export default {
   background-position: center;
   background-repeat: repeat;
   background-size: contain;
+  margin-bottom: 30px;
 }
 .images-container {
   width: 100%;

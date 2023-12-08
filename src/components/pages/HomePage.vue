@@ -111,7 +111,7 @@ export default {
     <!-- Resto del contenuto della tua homepage -->
   </div>
 
-  <div class="container">
+  <div class="container mb-4">
     <div class="our-resturants text-center mt-5 mb-2">
       <h1>I NOSTRI RISTORATORI</h1>
     </div>
