@@ -382,6 +382,7 @@ export default {
 .offcanvas {
   box-shadow: -7px 0px 30px 0px rgba(0, 0, 0, 0.45);
   background-color: rgb(48, 169, 129);
+  border: none !important;
 }
 .offcanvas-title {
   color: rgb(255, 255, 255);

@@ -88,14 +88,14 @@ export default {
   <!--! SE IL CARRELLO E' VUOTO-->
   <div class="d-flex flex-column align-items-center" v-else>
     <img class="text-center w-25 mx-auto" src="/img/Risorsa-4.png" alt="" />
-    <h1 class="empty-cart text-center mt-3">Il tuo carrello è vuoto</h1>
+    <h1 class="empty-cart text-center mt-3 mb-4">Il tuo carrello è vuoto!</h1>
     <router-link
-      class="btn btn-homepage mx-2 d-flex justify-content-center align-items-center"
+      class="btn btn-homepage d-flex justify-content-center align-items-center"
       aria-current="page"
       :to="{ name: 'home' }"
       >Torna alla Home <font-awesome-icon icon="fa-solid fa-house" size="lg"
     /></router-link>
-    <em class="my-2">e/o clicca fuori da questa schermata!</em>
+    <em class="my-2 text-light">e/o clicca fuori da questa schermata!</em>
   </div>
 </template>
 
@@ -243,14 +243,16 @@ export default {
   background-color: rgb(234, 94, 61);
   color: white;
   padding: 20px;
+  font-size: 30px;
 }
 .btn-homepage {
   width: 100%;
-  background-color: rgb(48, 169, 129);
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: rgb(48, 169, 129);
   font-weight: bold;
   &:hover {
     background-color: rgb(19, 65, 50);
+    color: white;
     cursor: pointer;
   }
 
