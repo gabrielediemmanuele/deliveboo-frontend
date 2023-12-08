@@ -38,12 +38,11 @@ export default {
     },
     totalItem() {
       let sum = 0;
-      let summ = 0;
       this.cart.forEach(function (item) {
-        let sum = item.price;
-        summ += sum * parseFloat(item.qty);
+        let itemTotal = item.price * item.qty;
+        sum += itemTotal;
       });
-      return summ;
+      return Number(sum.toFixed(2));
     },
   },
   created() {
