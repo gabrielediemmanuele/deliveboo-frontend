@@ -43,7 +43,7 @@ export default {
         let sum = item.price;
         summ += sum * parseFloat(item.qty);
       });
-      return summ.toFixed(2);
+      return summ;
     },
   },
   created() {
