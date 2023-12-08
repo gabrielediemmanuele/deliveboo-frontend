@@ -500,4 +500,21 @@ export default {
     border-style: none;
   }
 }
+
+//MODAL STYLE
+.modal-content {
+  box-shadow: 0px 0px 12px 1px rgb(80, 80, 80);
+  .modal-header {
+    .modal-title {
+      color: #04aa6d;
+    }
+
+    .close {
+      border: none;
+      background-color: white;
+      font-size: 30px;
+      color: rgb(234, 94, 61);
+    }
+  }
+}
 </style>
