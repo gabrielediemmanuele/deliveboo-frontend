@@ -136,8 +136,8 @@ export default {
             class="label-cont mt-4 mb-4 d-flex flex-column align-items-center"
             @click="toggleType(type)"
           >
-            <!--* Immagini -->
-            <div class="filter-img-cont" :class="{ active: !type.active }">
+            <!--* Immagini  // :class="{ active: !type.active }"-->
+            <div class="filter-img-cont">
               <img
                 v-if="type.id === 1"
                 src="/img/antique-pizzeria.jpg"
