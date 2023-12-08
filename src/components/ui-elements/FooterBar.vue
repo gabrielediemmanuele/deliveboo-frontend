@@ -47,7 +47,7 @@ export default {
 
 <template>
   <div class="footer-container p-3">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-lg-3 col-md-6 col-sm-12 my-2">
         <div class="link-col">
           <h4>Scopri DeliveBoo</h4>
@@ -77,7 +77,7 @@ export default {
           <a href="#" v-for="link in Aiuto">{{ link }}</a>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-12 my-2">
+      <div class="col-lg-2 col-md-6 col-sm-12 my-2 p-0">
         <div class="link-col">
           <h4>Social</h4>
           <div class="card">
@@ -124,22 +124,20 @@ export default {
   background-color: rgb(48, 169, 129);
   box-sizing: border-box !important;
   width: 100% !important;
-  margin-top: 80px !important;
 }
 .link-col {
   background-color: rgb(19, 65, 50) !important;
   color: white;
   padding: 15px;
-
   display: flex;
   flex-direction: column;
-
   border-radius: 20px;
   .linkedins {
     .personal-links {
       text-decoration: none;
       color: white;
       font-weight: bold;
+      font-size: 15px;
       &:hover {
         color: rgb(234, 94, 61);
       }
@@ -158,22 +156,22 @@ export default {
 
 //SOCIAL
 .card {
-  width: fit-content;
+  width: 160px;
   height: fit-content;
   background-color: rgb(238, 238, 238);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 8px 8px;
+  padding: 6px 6px;
   gap: 8px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
 }
 
 /* for all social containers*/
 .socialContainer {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 5px;
   background-color: rgb(234, 94, 61);
   display: flex;
@@ -181,6 +179,7 @@ export default {
   justify-content: center;
   overflow: hidden;
   transition-duration: 0.3s;
+  margin: 0px !important;
 }
 /* instagram*/
 .containerOne:hover {

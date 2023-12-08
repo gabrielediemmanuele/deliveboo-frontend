@@ -111,7 +111,7 @@ export default {
     <!-- Resto del contenuto della tua homepage -->
   </div>
 
-  <div class="container">
+  <div class="container mb-4">
     <div class="our-resturants text-center mt-5 mb-2">
       <h1>I NOSTRI RISTORATORI</h1>
     </div>
@@ -121,7 +121,7 @@ export default {
         <p>
           {{
             showNoRestaurantsMessage
-              ? "Ci dispiace!Non ci sono ristoranti con questa tipologia!"
+              ? "Ci dispiace! Non ci sono ristoranti con questa tipologia!"
               : ""
           }}
         </p>
@@ -136,8 +136,8 @@ export default {
             class="label-cont mt-4 mb-4 d-flex flex-column align-items-center"
             @click="toggleType(type)"
           >
-            <!--* Immagini -->
-            <div class="filter-img-cont" :class="{ active: !type.active }">
+            <!--* Immagini  // :class="{ active: !type.active }"-->
+            <div class="filter-img-cont">
               <img
                 v-if="type.id === 1"
                 src="/img/antique-pizzeria.jpg"
@@ -268,5 +268,10 @@ export default {
   text-align: center;
   margin-top: 20px;
   border-radius: 20px;
+  padding: 5px;
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
 }
 </style>
