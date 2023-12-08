@@ -17,7 +17,6 @@ export default {
 </script>
 
 <template>
-  <NavBar></NavBar>
   <router-view></router-view>
   <FooterBar></FooterBar>
 </template>
