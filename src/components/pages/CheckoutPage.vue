@@ -131,110 +131,216 @@ export default {
 
 <template>
   <NavBar :isHomePage="true" />
-  <div class="container">
-    <h1>{{ title }}</h1>
+  <div class="total-cont">
+    <div class="container form mt-4">
+      <h1>{{ title }}</h1>
+      <div class="mb-3">
+        <em
+          >I campi contrassegnati con "<span class="text-danger">*</span>" sono
+          obbligatori.</em
+        >
+      </div>
+      <form @submit.prevent="submitForm">
+        <!--* contenuto del form (dati utente) -->
+        <div class="row">
+          <div class="col-lg-6 my-2">
+            <label for="name" class="form-label"
+              >Nome<span class="text-danger">*</span></label
+            >
+            <input
+              v-model="formData.guest_name"
+              type="text"
+              name="name"
+              id="name"
+              class="form-control"
+              placeholder="Es. Federica / Fabio"
+            />
+          </div>
+          <div class="col-lg-6 my-2">
+            <label for="surname" class="form-label"
+              >Cognome<span class="text-danger">*</span></label
+            >
+            <input
+              v-model="formData.guest_surname"
+              type="text"
+              name="surname"
+              id="surname"
+              class="form-control"
+              placeholder="Es. Rossi"
+            />
+          </div>
+          <div class="col-lg-4 my-2">
+            <label for="address" class="form-label"
+              >Indirizzo<span class="text-danger">*</span></label
+            >
+            <input
+              v-model="formData.guest_address"
+              type="text"
+              name="address"
+              id="address"
+              class="form-control"
+              placeholder="Es. Via Cerasi 4"
+            />
+          </div>
+          <div class="col-lg-4 my-2">
+            <label for="phone" class="form-label"
+              >Numero<span class="text-danger">*</span></label
+            >
+            <input
+              v-model="formData.guest_phone"
+              type="text"
+              name="phone"
+              id="phone"
+              class="form-control"
+              placeholder="Es. 3287485948"
+            />
+          </div>
 
-    <form @submit.prevent="submitForm">
-      <label for="name" class="form-label">Nome</label>
-      <input
-        v-model="formData.guest_name"
-        type="text"
-        name="name"
-        id="name"
-        class="form-control"
-      />
-
-      <label for="surname" class="form-label">Cognome</label>
-      <input
-        v-model="formData.guest_surname"
-        type="text"
-        name="surname"
-        id="surname"
-        class="form-control"
-      />
-
-      <label for="address" class="form-label">Indirizzo</label>
-      <input
-        v-model="formData.guest_address"
-        type="text"
-        name="address"
-        id="address"
-        class="form-control"
-      />
-
-      <label for="phone" class="form-label">Numero</label>
-      <input
-        v-model="formData.guest_phone"
-        type="text"
-        name="phone"
-        id="phone"
-        class="form-control"
-      />
-
-      <label for="email" class="form-label">Email</label>
-      <input
-        v-model="formData.guest_mail"
-        type="email"
-        name="email"
-        id="email"
-        class="form-control"
-      />
-
-      <!-- Template Carta nuovo  -->
-      <div>
-        <div class="form-group">
-          <label class="text">
-            Numero di carta di credito <span class="need">*</span>
-          </label>
-          <div id="creditCardNumber" class="form-control"></div>
-          <span style="color: red" class="error-message" v-if="error.guestName"
-            >Inserire numeri carta</span
-          >
+          <div class="col-lg-4 my-2">
+            <label for="email" class="form-label">Email</label>
+            <input
+              v-model="formData.guest_mail"
+              type="email"
+              name="email"
+              id="email"
+              class="form-control"
+              placeholder="Es. FedericaRossi@live.it"
+            />
+          </div>
         </div>
-        <div class="form-group">
-          <div class="riga d-flex">
-            <div class="col-6">
-              <label class="text">
-                Data di scadenza <span class="need">*</span></label
-              >
-              <div id="expireDate" class="form-control"></div>
-              <span
-                style="color: red"
-                class="error-message"
-                v-if="error.guestName"
-                >Inserire data di scadenza</span
-              >
-            </div>
-            <div class="col-6">
-              <label class="text"> CVV <span class="need">*</span></label>
-              <div id="cvv" class="form-control"></div>
-              <span
-                style="color: red"
-                class="error-message"
-                v-if="error.guestName"
-                >Inserire CVV</span
-              >
+
+        <!--* Template Carta nuovo  -->
+        <div>
+          <div class="form-group">
+            <label class="text mt-3">
+              Numero di carta di credito <span class="need text-danger">*</span>
+            </label>
+            <!--* Brand Icons -->
+            <span class="brands-cont">
+              <img
+                src="../../../public/img/mastercard.png"
+                alt="mastercard logo"
+              />
+              <img src="../../../public/img/paypal.png" alt="paypal logo" />
+              <img src="../../../public/img/visa.svg.png" alt="visa logo" />
+            </span>
+            <div id="creditCardNumber" class="form-control mt-2"></div>
+            <span
+              style="color: red"
+              class="error-message"
+              v-if="error.guestName"
+              >Es. 4111 1111 1111 1111</span
+            >
+          </div>
+
+          <div class="form-group">
+            <div class="d-flex justify-content-between">
+              <div class="col-lg-6">
+                <label class="text">
+                  Data di scadenza
+                  <span class="need text-danger">*</span></label
+                >
+                <div id="expireDate" class="form-control"></div>
+                <span
+                  style="color: red"
+                  class="error-message"
+                  v-if="error.guestName"
+                  >Inserire data di scadenza</span
+                >
+              </div>
+              <div class="col-lg-6">
+                <label class="text">
+                  CVV <span class="need text-danger">*</span></label
+                >
+                <div id="cvv" class="form-control"></div>
+                <span
+                  style="color: red"
+                  class="error-message"
+                  v-if="error.guestName"
+                  >Inserire CVV</span
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-12 my-3">
-        <div v-if="this.totalItem <= 0" class="bg-danger mb-3">
-          <span class="ps-3">Carrello vuoto, effettua un ordine.</span>
-          <span class="fas fa-arrow-right"></span>
+        <div class="last-cont mt-2">
+          <div class="total">
+            <span
+              ><strong class="me-2">Totale:</strong>€ {{ this.totalItem }}</span
+            >
+          </div>
+          <div class="my-3">
+            <div v-if="this.totalItem <= 0" class="bg-danger mb-3">
+              <span class="ps-3">Carrello vuoto, effettua un ordine.</span>
+              <span class="fas fa-arrow-right"></span>
+            </div>
+            <button type="submit" v-else class="btn btn-checkout mb-3">
+              <span class="">Ordina Adesso</span>
+              <div v-show="payLoad" class="cell"></div>
+            </button>
+          </div>
         </div>
-        <button type="submit" v-else class="btn btn-warning mb-3">
-          <span class="ps-3">Paga €{{ this.totalItem }}</span>
-          <div v-show="payLoad" class="cell"></div>
-        </button>
-      </div>
+        <!-- <h3>Totale da pagare: € {{ this.totalItem }}</h3>
 
-      <!-- <h3>Totale da pagare: € {{ this.totalItem }}</h3>
-
-      <button type="submit" class="btn btn-primary mt-4">Invia dati</button> -->
-    </form>
+        <button type="submit" class="btn btn-primary mt-4">Invia dati</button> -->
+      </form>
+    </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.total-cont {
+  background-image: url(../../../public/img/pattern.png);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 550px;
+}
+#creditCardNumber {
+  height: 50px;
+  margin-bottom: 10px;
+}
+/* color: rgb(48, 169, 129); */
+::placeholder {
+  color: rgb(196, 196, 196);
+}
+.container {
+  width: 60%;
+  border: 2px solid rgb(48, 169, 129);
+  padding: 35px;
+  border-radius: 20px;
+  margin: 10px auto;
+  background-color: white;
+  h1 {
+    color: rgb(234, 94, 61);
+  }
+}
+
+.brands-cont {
+  img {
+    width: 20px;
+    margin: 0px 10px;
+  }
+}
+
+#expireDate {
+  height: 50px;
+  width: 90%;
+}
+#cvv {
+  height: 50px;
+  width: 90%;
+}
+
+.btn-checkout {
+  background-color: rgb(48, 169, 129);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  &:hover {
+    background-color: rgb(234, 94, 61) !important;
+    color: white;
+  }
+}
+</style>
+.btn.checkout { background-color: rgb(255, 255, 255); color: rgb(48, 169, 129);
+font-weight: bold; &:hover { background-color: rgb(19, 65, 50) !important;
+color: white; } }
