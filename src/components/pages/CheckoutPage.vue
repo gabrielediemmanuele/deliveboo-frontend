@@ -341,6 +341,3 @@ export default {
   }
 }
 </style>
-.btn.checkout { background-color: rgb(255, 255, 255); color: rgb(48, 169, 129);
-font-weight: bold; &:hover { background-color: rgb(19, 65, 50) !important;
-color: white; } }

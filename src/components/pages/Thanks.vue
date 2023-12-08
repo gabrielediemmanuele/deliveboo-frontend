@@ -36,15 +36,51 @@ export default {
 
   .image-cont {
     img {
-      width: 35%;
+      @media (max-width: 576px) {
+        width: 50%;
+      }
+
+      @media (min-width: 577px) and (max-width: 768px) {
+        width: 35%;
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        width: 35%;
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        width: 35%;
+      }
+
+      @media (min-width: 1200px) and (max-width: 1400px) {
+        width: 35%;
+      }
     }
   }
   .message-cont {
-    font-size: 30px;
     color: rgb(234, 94, 61);
     /* color: rgb(48, 169, 129); */
     font-weight: bolder;
     margin-bottom: 20px;
+    @media (max-width: 567px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 767) {
+      font-size: 16px;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      font-size: 30px;
+    }
+
+    @media (min-width: 991px) and (max-width: 1200px) {
+      font-size: 30px;
+    }
+
+    @media (min-width: 1200px) and (max-width: 1400px) {
+      font-size: 30px;
+    }
   }
 }
 
