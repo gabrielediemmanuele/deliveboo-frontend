@@ -121,7 +121,7 @@ export default {
         <p>
           {{
             showNoRestaurantsMessage
-              ? "Ci dispiace!Non ci sono ristoranti con questa tipologia!"
+              ? "Ci dispiace! Non ci sono ristoranti con questa tipologia!"
               : ""
           }}
         </p>
@@ -268,5 +268,10 @@ export default {
   text-align: center;
   margin-top: 20px;
   border-radius: 20px;
+  padding: 5px;
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
 }
 </style>
