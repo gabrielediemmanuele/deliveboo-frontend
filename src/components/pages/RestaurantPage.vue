@@ -34,7 +34,7 @@ export default {
       for (i = 0; i < this.cart.length; i++) {
         total += this.cart[i].price;
       }
-      return total;
+      return total.toFixed(2);
     },
     totalItem() {
       let sum = 0;
@@ -43,7 +43,7 @@ export default {
         let sum = item.price;
         summ += sum * parseFloat(item.qty);
       });
-      return summ;
+      return summ.toFixed(2);
     },
   },
   created() {
