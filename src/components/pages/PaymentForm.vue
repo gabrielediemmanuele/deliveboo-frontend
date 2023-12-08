@@ -4,6 +4,7 @@ export default {
     cart: Array, // Assicurati che il componente riceva il carrello come prop
     totalItem: Number, // Assicurati che il componente riceva totalItem come prop
   },
+  emits: ["remove", "add", "clearCart"],
   methods: {
     removeFromCart(id) {
       // Implementa la logica per rimuovere un elemento dal carrello

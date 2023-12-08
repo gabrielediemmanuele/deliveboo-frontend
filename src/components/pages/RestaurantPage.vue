@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import PaymentForm from "./PaymentForm.vue";
+import NavBar from "../ui-elements/NavBar.vue";
 
 function findById(arr, id) {
   return arr.find((x) => x.id === id);
@@ -24,7 +25,7 @@ export default {
       showModalemptyCart: false,
     };
   },
-  components: { PaymentForm },
+  components: { PaymentForm, NavBar },
   computed: {
     cartTotal() {
       let i;
@@ -147,7 +148,7 @@ export default {
       let parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
       this.viewCart();
-      // window.dispatchEvent(new Event("cart-updated"));
+      window.dispatchEvent(new Event("storage"));
     },
     remove(id) {
       let item = findById(this.cart, id);
@@ -169,6 +170,7 @@ export default {
 </script>
 
 <template>
+  <NavBar></NavBar>
   <!--* Restaurant Page Layout - Container Totale -->
   <div class="total-container">
     <!--* Container per l'immagine del ristorante -->

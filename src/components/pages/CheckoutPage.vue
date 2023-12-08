@@ -54,8 +54,16 @@ export default {
     // pulizia carrello
     clearCart() {
       this.cart = [];
+      this.saveCart();
       this.showModal = false;
       this.showModalemptyCart = false;
+      // this.$emit("cart-cleared");
+    },
+
+    saveCart() {
+      let parsed = JSON.stringify(this.cart);
+      localStorage.setItem("cart", parsed);
+      // window.dispatchEvent(new Event("cart-updated"));
     },
 
     // RICHIESTA GET PER IL TOKEN BRAINTREE
