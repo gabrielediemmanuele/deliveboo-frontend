@@ -204,11 +204,10 @@ export default {
               name="name"
               id="name"
               class="form-control"
+              :class="{ 'is-invalid': errors.guest_name }"
               placeholder="Es. Federica / Fabio"
             />
-            <span style="color: red" class="error-message">{{
-              errors.guest_name
-            }}</span>
+            <div class="invalid-feedback">{{ errors.guest_name }}</div>
           </div>
           <div class="col-lg-6 my-2">
             <label for="surname" class="form-label"
@@ -220,11 +219,10 @@ export default {
               name="surname"
               id="surname"
               class="form-control"
+              :class="{ 'is-invalid': errors.guest_surname }"
               placeholder="Es. Rossi"
             />
-            <span style="color: red" class="error-message">{{
-              errors.guest_surname
-            }}</span>
+            <div class="invalid-feedback">{{ errors.guest_surname }}</div>
           </div>
           <div class="col-lg-4 my-2">
             <label for="address" class="form-label"
@@ -236,11 +234,10 @@ export default {
               name="address"
               id="address"
               class="form-control"
+              :class="{ 'is-invalid': errors.guest_address }"
               placeholder="Es. Via Cerasi 4"
             />
-            <span style="color: red" class="error-message">{{
-              errors.guest_address
-            }}</span>
+            <div class="invalid-feedback">{{ errors.guest_address }}</div>
           </div>
           <div class="col-lg-4 my-2">
             <label for="phone" class="form-label"
@@ -252,11 +249,10 @@ export default {
               name="phone"
               id="phone"
               class="form-control"
+              :class="{ 'is-invalid': errors.guest_phone }"
               placeholder="Es. 3287485948"
             />
-            <span style="color: red" class="error-message">{{
-              errors.guest_phone
-            }}</span>
+            <div class="invalid-feedback">{{ errors.guest_phone }}</div>
           </div>
 
           <div class="col-lg-4 my-2">
@@ -269,11 +265,10 @@ export default {
               name="email"
               id="email"
               class="form-control"
+              :class="{ 'is-invalid': errors.guest_mail }"
               placeholder="Es. FedericaRossi@live.it"
             />
-            <span style="color: red" class="error-message">{{
-              errors.guest_mail
-            }}</span>
+            <div class="invalid-feedback">{{ errors.guest_mail }}</div>
           </div>
         </div>
 
