@@ -187,7 +187,7 @@ export default {
 
 // Total
 .total {
-  width: 50%;
+  width: 60%;
   margin: 0px auto 20px auto;
   background-color: rgb(255, 255, 255);
   padding: 2px 2px 2px 14px;
