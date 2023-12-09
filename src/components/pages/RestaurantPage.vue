@@ -218,7 +218,11 @@ export default {
     <!--* Layout delle card dei PIATTI -->
     <div class="container dishes">
       <div class="row justify-content-evenly">
-        <div class="dish-card mt-3" v-for="dish in dishes" :key="dish.id">
+        <div
+          class="dish-card d-flex flex-column justify-content-between mt-3"
+          v-for="dish in dishes"
+          :key="dish.id"
+        >
           <img :src="dish.image" class="dish-image mb-1" alt="" />
           <h6 class="card-title">{{ dish.name }}</h6>
           <p class="card-price">€{{ dish.price }}</p>
@@ -421,6 +425,7 @@ export default {
   }
   .dish-image {
     width: 100%;
+    height: 160px;
     border-radius: 20px;
   }
 
@@ -436,10 +441,14 @@ export default {
   .description-cont {
     height: 70px;
     border-radius: 5px;
-    overflow-y: auto;
+
     box-shadow: 0px 0px 1px 0px rgb(135, 135, 135) inset;
     padding: 3px;
     font-size: 12px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
