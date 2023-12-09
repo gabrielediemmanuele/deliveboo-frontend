@@ -186,7 +186,7 @@ export default {
 <template>
   <NavBar :isHomePage="true" />
   <div class="total-cont">
-    <div class="container form mt-4">
+    <div class="container form">
       <h1>{{ title }}</h1>
       <div class="mb-3">
         <em
@@ -368,6 +368,12 @@ export default {
   background-position: center;
   background-repeat: repeat;
   background-size: 550px;
+  padding-top: 55px;
+  padding-bottom: 55px;
+  .container.form {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
 }
 #creditCardNumber {
   height: 50px;
