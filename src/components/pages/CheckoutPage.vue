@@ -27,6 +27,13 @@ export default {
         totalItem: this.$route.query.totalItem,
         cart: this.cart,
       },
+      errors: {
+        guest_name: "",
+        guest_surname: "",
+        guest_address: "",
+        guest_phone: "",
+        guest_mail: "",
+      },
     };
   },
   created() {
@@ -41,6 +48,45 @@ export default {
 
   methods: {
     submitForm() {
+      if (!this.formData.guest_name) {
+        this.errors.guest_name = "Inserisci il nome.";
+        return;
+      } else {
+        this.errors.guest_name = "";
+      }
+
+      if (!this.formData.guest_surname) {
+        this.errors.guest_surname = "Inserisci il cognome.";
+        return;
+      } else {
+        this.errors.guest_surname = "";
+      }
+      if (!this.formData.guest_address) {
+        this.errors.guest_address = "Inserisci l'indirizzo.";
+        return;
+      } else {
+        this.errors.guest_address = "";
+      }
+      if (!this.formData.guest_phone) {
+        this.errors.guest_phone = "Inserisci un numero di telefono.";
+        return;
+      } else {
+        this.errors.guest_phone = ""; // Cancella eventuali errori precedenti
+      }
+
+      if (isNaN(this.formData.guest_phone)) {
+        this.errors.guest_phone = "Inserisci un numero di telefono valido.";
+        return;
+      } else {
+        this.errors.guest_phone = ""; // Cancella eventuali errori precedenti
+      }
+      if (!this.formData.guest_mail) {
+        this.errors.guest_mail = "Inserisci un indirizzo mail valido.";
+        return;
+      } else {
+        this.errors.guest_mail = "";
+      }
+
       this.payWithCard();
       // Aggiungi l'array cart al formData
       this.formData.cart = this.cart;
@@ -163,6 +209,9 @@ export default {
               class="form-control"
               placeholder="Es. Federica / Fabio"
             />
+            <span style="color: red" class="error-message">{{
+              errors.guest_name
+            }}</span>
           </div>
           <div class="col-lg-6 my-2">
             <label for="surname" class="form-label"
@@ -176,6 +225,9 @@ export default {
               class="form-control"
               placeholder="Es. Rossi"
             />
+            <span style="color: red" class="error-message">{{
+              errors.guest_surname
+            }}</span>
           </div>
           <div class="col-lg-4 my-2">
             <label for="address" class="form-label"
@@ -189,6 +241,9 @@ export default {
               class="form-control"
               placeholder="Es. Via Cerasi 4"
             />
+            <span style="color: red" class="error-message">{{
+              errors.guest_address
+            }}</span>
           </div>
           <div class="col-lg-4 my-2">
             <label for="phone" class="form-label"
@@ -202,10 +257,15 @@ export default {
               class="form-control"
               placeholder="Es. 3287485948"
             />
+            <span style="color: red" class="error-message">{{
+              errors.guest_phone
+            }}</span>
           </div>
 
           <div class="col-lg-4 my-2">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label"
+              >Email<span class="text-danger">*</span></label
+            >
             <input
               v-model="formData.guest_mail"
               type="email"
@@ -214,6 +274,9 @@ export default {
               class="form-control"
               placeholder="Es. FedericaRossi@live.it"
             />
+            <span style="color: red" class="error-message">{{
+              errors.guest_mail
+            }}</span>
           </div>
         </div>
 
@@ -232,13 +295,14 @@ export default {
               <img src="../../../public/img/paypal.png" alt="paypal logo" />
               <img src="../../../public/img/visa.svg.png" alt="visa logo" />
             </span>
-            <div id="creditCardNumber" class="form-control mt-2"></div>
-            <span
-              style="color: red"
-              class="error-message"
-              v-if="error.guestName"
-              >Es. 4111 1111 1111 1111</span
-            >
+            <div id="creditCardNumber" class="form-control mt-2">
+              <span
+                style="color: red"
+                class="error-message"
+                v-if="error.guestName"
+                >Es. 4111 1111 1111 1111</span
+              >
+            </div>
           </div>
 
           <div class="form-group">
@@ -248,25 +312,27 @@ export default {
                   Data di scadenza
                   <span class="need text-danger">*</span></label
                 >
-                <div id="expireDate" class="form-control"></div>
-                <span
-                  style="color: red"
-                  class="error-message"
-                  v-if="error.guestName"
-                  >Inserire data di scadenza</span
-                >
+                <div id="expireDate" class="form-control">
+                  <span
+                    style="color: red"
+                    class="error-message"
+                    v-if="error.guestName"
+                    >Inserire data di scadenza</span
+                  >
+                </div>
               </div>
               <div class="col-lg-6">
                 <label class="text">
                   CVV <span class="need text-danger">*</span></label
                 >
-                <div id="cvv" class="form-control"></div>
-                <span
-                  style="color: red"
-                  class="error-message"
-                  v-if="error.guestName"
-                  >Inserire CVV</span
-                >
+                <div id="cvv" class="form-control">
+                  <span
+                    style="color: red"
+                    class="error-message"
+                    v-if="error.guestName"
+                    >Inserire CVV</span
+                  >
+                </div>
               </div>
             </div>
           </div>
