@@ -225,7 +225,7 @@ export default {
           <img :src="dish.image" class="dish-image mb-1" alt="" />
           <h6 class="card-title">{{ dish.name }}</h6>
           <p class="card-price">€{{ dish.price }}</p>
-          <div class="description-cont my-1">
+          <div class="description-cont scroll-1 my-1">
             <p class="card-text">{{ dish.description }}</p>
           </div>
           <div
@@ -358,13 +358,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-//Container Immagine
-.container.dishes {
+.total-container {
   background-image: url(../../../public/img/pattern.png);
   background-position: center;
   background-repeat: repeat;
-  background-size: contain;
-  margin-bottom: 30px;
+  background-size: 450px;
+}
+//Container Immagine
+.container.dishes {
+  /* margin-bottom: 30px; */
+  padding-bottom: 30px;
 }
 .images-container {
   width: 100%;
@@ -438,22 +441,29 @@ export default {
     font-weight: bold;
   }
   .description-cont {
-    height: 70px;
+    height: 50px;
     border-radius: 5px;
-
-    box-shadow: 0px 0px 1px 0px rgb(135, 135, 135) inset;
+    /* box-shadow: 0px 0px 1px 0px rgb(135, 135, 135) inset; */
     padding: 3px;
     font-size: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .scroll-1::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scroll-1::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: rgb(48, 169, 129);
   }
 }
 
 //Button Container
 .btn-container {
-  margin-top: 10px;
+  margin-top: 20px;
   .btn-add {
     border-radius: 20px !important;
     padding: 4px 8px !important;
