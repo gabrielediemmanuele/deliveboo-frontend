@@ -47,6 +47,7 @@ export default {
   },
 
   methods: {
+    // Controllo validazione input
     submitForm() {
       if (!this.formData.guest_name) {
         this.errors.guest_name = "Inserisci il nome.";
