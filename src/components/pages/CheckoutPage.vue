@@ -166,15 +166,12 @@ export default {
               token: payload.nonce,
             })
             .then((resp) => {
-              alert("Payment successful!");
-            })
-            .catch((err) => {
-              console.log(err);
-            })
-            .finally(() => {
               this.payLoad = false;
               this.clearCart();
               this.$router.push("/thankyou");
+            })
+            .catch((err) => {
+              console.log(err);
             });
         });
       }
